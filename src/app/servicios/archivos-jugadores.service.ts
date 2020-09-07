@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MiHttpService } from './mi-http/mi-http.service'; 
+import { MiHttpService } from './mi-http/mi-http.service';
+import {Http, Headers, Response} from '@angular/http';
+
 
 @Injectable()
 export class ArchivosJugadoresService {
@@ -7,7 +9,7 @@ export class ArchivosJugadoresService {
   api="http://localhost:8080/jugadoresarchivo/apirestjugadores/";
   peticion:any;
   constructor( public miHttp: MiHttpService ) {
-    
+
   }
 
 
@@ -21,9 +23,9 @@ export class ArchivosJugadoresService {
     }, err => {
       console.log( err );
     })
- 
 
-  
+
+
   }
 
 

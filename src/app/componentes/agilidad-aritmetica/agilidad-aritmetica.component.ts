@@ -2,14 +2,13 @@ import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAgilidad } from '../../clases/juego-agilidad'
 
 import {Subscription} from "rxjs";
-import {TimerObservable} from "rxjs/observable/TimerObservable";
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
   styleUrls: ['./agilidad-aritmetica.component.css']
 })
 export class AgilidadAritmeticaComponent implements OnInit {
-   @Output() 
+   @Output()
   enviarJuego :EventEmitter<any>= new EventEmitter<any>();
   nuevoJuego : JuegoAgilidad;
   ocultarVerificar: boolean;
@@ -20,14 +19,14 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
    constructor() {
      this.ocultarVerificar=true;
-     this.Tiempo=5; 
+     this.Tiempo=5;
     this.nuevoJuego = new JuegoAgilidad();
-    console.info("Inicio agilidad");  
+    console.info("Inicio agilidad");
   }
   NuevoJuego() {
     this.ocultarVerificar=false;
-   this.repetidor = setInterval(()=>{ 
-      
+   this.repetidor = setInterval(()=>{
+
       this.Tiempo--;
       console.log("llego", this.Tiempo);
       if(this.Tiempo==0 ) {
@@ -43,9 +42,9 @@ export class AgilidadAritmeticaComponent implements OnInit {
   {
     this.ocultarVerificar=false;
     clearInterval(this.repetidor);
-   
 
-   
-  }  
+
+
+  }
 
 }
