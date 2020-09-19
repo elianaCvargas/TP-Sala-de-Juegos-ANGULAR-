@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { AdivinaElNumeroComponent } from './componentes/adivina-el-numero/adivina-el-numero.component';
 import { ListadoDeResultadosComponent } from './componentes/listado-de-resultados/listado-de-resultados.component';
@@ -12,11 +13,11 @@ import { HttpModule } from '@angular/http';
 // agrego las clases para utilizar ruteo
 import { RouterModule, Routes } from '@angular/router';
 
-import { MiHttpService } from './servicios/mi-http/mi-http.service'; 
-import { PaisesService } from './servicios/paises.service'; 
+import { MiHttpService } from './servicios/mi-http/mi-http.service';
+import { PaisesService } from './servicios/paises.service';
 
-import { JugadoresService } from './servicios/jugadores.service'; 
-import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service'; 
+import { JugadoresService } from './servicios/jugadores.service';
+import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service';
 import { ErrorComponent } from './componentes/error/error.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
 import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
@@ -25,6 +26,9 @@ import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/ad
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { RuteandoModule } from './ruteando/ruteando.module';
 import { ListadoComponent } from './componentes/listado/listado.component';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import {DemoMaterialModule} from './material-module';
+
 // declaro donde quiero que se dirija
 /*
 const MiRuteo = [{path: 'error' , component: ErrorComponent},
@@ -53,6 +57,12 @@ import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-goog
 import { AgmCoreModule } from '@agm/core';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { SalaPublicLayoutComponent } from './layouts/sala-public-layout/sala-public-layout.component';
+import { SalaRegistroLayoutComponent } from './layouts/sala-registro-layout/sala-registro-layout.component';
+import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { PieComponent } from './componentes/pie/pie.component';
 
 @NgModule({
   declarations: [
@@ -78,21 +88,33 @@ import { SexoPipe } from './pipes/sexo.pipe';
     MapaDeGoogleComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    SalaPublicLayoutComponent,
+    SalaRegistroLayoutComponent,
+    AuthLayoutComponent,
+    PieComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RuteandoModule,
     HttpModule,
+    MatFormFieldModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB6f8x4IjRlesQ3oETc6BXYQHVRTOlY3Ys'
-    })
+    }),
+    BrowserAnimationsModule,
+    DemoMaterialModule
+
     // NgbModule.forRoot(MiRuteo),
     // importo el ruteo
     // RouterModule.forRoot(MiRuteo)
   ],
-  providers: [ JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
+  ,JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));
