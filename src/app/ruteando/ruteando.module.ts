@@ -26,12 +26,6 @@ import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-pu
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-  // { path: '', component: SalaPublicLayoutComponent,
-  //   // canActivate: [ProtectedGuard],
-  //   children: [
-  //     { path: "login", component: PrincipalComponent }
-  //   ]
-  // },
   { path: 'Registro', component: RegistroComponent },
   { path: '', redirectTo: 'Principal', pathMatch: 'full' },
   { path: 'Principal', component: PrincipalComponent,
@@ -44,11 +38,9 @@ const MiRuteo = [
       { path: 'QuienSoy', component: QuienSoyComponent },
       { path: 'Listado', component: ListadoComponent },
       { path: 'Paises', component: ListadoDePaisesComponent },
+      // {path: 'Juegos', component: JuegosComponent}
     ]
   },
-
-
-
 
   {
     path: 'Juegos',

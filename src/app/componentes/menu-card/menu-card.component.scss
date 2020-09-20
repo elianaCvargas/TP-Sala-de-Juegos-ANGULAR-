@@ -18,7 +18,7 @@ img {
     height: 200px;
 }/* Add some padding inside the card container */
 .container {
-    padding: 2px 16px;
+  height: 100vh;
 }
 
 
@@ -39,7 +39,7 @@ img {
 
     border: none;
     outline: 0;
- 
+
     padding: 8px;
     color: white;
    /* background-color: #000;*/
@@ -47,9 +47,9 @@ img {
     cursor: pointer;
     width: 100%;
   }
-  
+
   .button:hover {background-color: #3e8e41}
-  
+
   .button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;

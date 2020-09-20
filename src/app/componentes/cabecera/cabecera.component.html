@@ -1,62 +1,91 @@
-<div class="panel panel-default headerColor">
-
-  <!-- Navbar -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
-    <div class="container">
-
-      <!-- Brand -->
-      <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong>MDB</strong>
-      </a>
-
-      <!-- Collapse -->
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <!-- Links -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-        <!-- Left -->
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  target="_blank">About MDB</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  target="_blank">Free download</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link"  target="_blank">Free tutorials</a>
-          </li>
-        </ul>
-
-        <!-- Right -->
-        <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
-              target="_blank">
-              <i class="fab fa-github mr-2"></i>ABOUT ME
-            </a>
-          </li>
-        </ul>
-
+<!--
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar headerColor">
+    <div class="row">
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="aboveMenu" class="">Home</button>
+        <mat-menu #aboveMenu="matMenu" yPosition="above">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="belowMenu">Games</button>
+        <mat-menu #belowMenu="matMenu" yPosition="below">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="beforeMenu">Profile</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
       </div>
 
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="beforeMenu"></button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="beforeMenu"></button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div class="col">
+        <button mat-button [matMenuTriggerFor]="beforeMenu"></button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+      <div>
+        <button mat-button [matMenuTriggerFor]="beforeMenu">About me</button>
+        <mat-menu #beforeMenu="matMenu" xPosition="before">
+          <button mat-menu-item>Item 1</button>
+          <button mat-menu-item>Item 2</button>
+        </mat-menu>
+      </div>
+    </div>
+
+  </nav> -->
+
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-black headerNav">
+    <div >
+      <img src="./../../../assets/imagenes/gaming_joystick_01_10_01_game_video_joystick_computer_contour_play-512.png" width="75px"/>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Games</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li> -->
+      </ul>
     </div>
   </nav>
+
+
+
+<!-- <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  </nav> -->
