@@ -1,0 +1,8 @@
+.foot {
+  color: antiquewhite;
+  background: black;
+  opacity: 0.9;
+  border-right: none;
+  border-top-style: solid;
+  border-top-color: opacify($color: blanchedalmond, $amount: 0.1);;
+}
