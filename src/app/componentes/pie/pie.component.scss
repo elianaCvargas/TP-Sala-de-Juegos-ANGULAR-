@@ -4,5 +4,8 @@
   opacity: 0.9;
   border-right: none;
   border-top-style: solid;
-  border-top-color: opacify($color: blanchedalmond, $amount: 0.1);;
+  border-top-color: opacify($color: blanchedalmond, $amount: 0.1);
+
+    border-top-width: thin;
+    border-top-style: dotted;
 }
