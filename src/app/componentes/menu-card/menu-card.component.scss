@@ -70,11 +70,11 @@
 }
 
 .juego {
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .carousel-item .active {
-  height: 400px;
+  // height: 400px;
 }
 
 .carousel .slide {
@@ -90,7 +90,15 @@ margin-top: -20px;
 }
 
 
-.d-md-block {
+.d-md-block-mine {
     display: block!important;
-    margin: 150px;
+    margin-bottom: 116px;
+}
+
+.carousel-indicatorsMine {
+  bottom: 70px;
+}
+
+.paramtxt {
+  padding-top: 10px;
 }

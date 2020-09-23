@@ -1,31 +1,12 @@
 
 
-.hero-text {
-text-align: center;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
-color: #3E06B0;
-}
+
 
 li {
-// border: none;
-// outline: 0;
-// display: inline-block;
-// padding: 10px 25px;
-// color: black;
-// background-color: #ddd;
-// text-align: center;
-// cursor: pointer;
 font-size: large;
 }
 
 
-.hero-text a:hover {
-background-color: #555;
-color: white;
-}
 
 .headerNav {
   position: fixed;
@@ -33,6 +14,7 @@ color: white;
   opacity: 0.9;
   z-index: 1000;
   width: 100%;
+  height: 70px;
 }
 
 .logo {
@@ -43,4 +25,13 @@ color: white;
   height: auto;
   top: 0;
   left: 0;
+}
+
+.loginNavMine {
+  border-style: solid;
+  border-radius: 10px;
+  border-color: rgba(255, 235, 205, 0.52);
+  align-items: center;
+  padding-right: 20px;
+  padding-left: 20px;
 }
