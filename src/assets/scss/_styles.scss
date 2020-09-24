@@ -1,27 +1,20 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
 html {
-  background: url(./../imagenes/game.jpg) no-repeat center center fixed;
+  background: url(./../imagenes/game.jpg) fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   min-height: 100%;
-  min-width: 1024px;
+  // min-width: 1024px;
   width: 100%;
   height: auto;
-
-  /* Set up positioning */
-  position: fixed;
   top: 0;
   left: 0;
 }
 
-
 body {
   background: none;
 }
-
-/**  Copyright 2020 Google LLC. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */

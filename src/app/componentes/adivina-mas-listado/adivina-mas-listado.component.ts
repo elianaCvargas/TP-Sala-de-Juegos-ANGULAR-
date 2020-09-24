@@ -12,6 +12,7 @@ export class AdivinaMasListadoComponent implements OnInit {
 
   ngOnInit() {
   }
+
    tomarJuegoTerminado(juego: Juego)
   {
     this.listadoParaCompartir.push(juego);

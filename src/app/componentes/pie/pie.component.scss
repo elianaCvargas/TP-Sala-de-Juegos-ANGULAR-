@@ -1,0 +1,17 @@
+.foot {
+  color: antiquewhite;
+  background: black;
+  opacity: 0.9;
+  border-right: none;
+  border-top-style: solid;
+  border-top-color: opacify($color: blanchedalmond, $amount: 0.1);
+
+    border-top-width: thin;
+    border-top-style: dotted;
+
+   position: fixed;
+  // left: 0;
+   bottom: 0;
+   width: 100%;
+  // text-align: center;
+}

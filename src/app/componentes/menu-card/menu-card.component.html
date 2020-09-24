@@ -1,40 +1,106 @@
-<div class="container" >
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/cerebro.jpg" alt="Avatar" style="width:100%">
-      <h1>Velocidad y agilidad aritmética </h1>
-      <p class="title">Juego de agilidad mental</p>
-      <p>UTN FRA </p>
-  
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>           <button class="button"  (click)="Juego('Agilidad')">Jugar</button></p>
-    
+<div class="contenedor_ruleta">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <div>
+      <ol class="carousel-indicators carousel-indicatorsMine">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      </ol>
     </div>
-  
-    <div class="card">
-      <img class="img-thumbnail" src="./assets/imagenes/ppt.jpg" alt="Avatar" style="width:100%">
-      <h1>Piedra Papel o Tijera</h1>
-      <p class="title">Juega contra la máquina</p>
-      <p>UTN FRA </p>
-      
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>           <button class="button"  (click)="Juego('PPT')">Jugar</button></p>
-    </div>
-    <div class="card">
-      <img  class="img-thumbnail"  src="./assets/imagenes/adivina.png" alt="Avatar" style="width:100%">
-      <h1>Adivina el número secreto</h1>
-      <p class="title">Juega de estrategia</p>
-      <p>UTN FRA </p>
-      
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>           <button class="button"  (click)="Juego('Adivina')">Jugar</button></p>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="carousel-caption d-none d-md-block d-md-block-mine">
+          <div class="juego">
+            <img src="./../../../assets/imagenes/adivinaNumero.png"
+              class="img-fluid rounded-circle hoverable roundedImg">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-warning" routerLink="Adivina" routerLinkActive="active-link">Jugar</button>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row"></div>
+            <div class="row">
+              <div class="col"></div>
+              <div class="col ">
+                <div class="paramtxt">
+                  <h5>Adivina el numero</h5>
+                  <p>El titulo lo explica todo, no?</p>
+                  <p>Si adivinas ganás y sumás puntos</p>
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="carousel-caption d-none d-md-block d-md-block-mine">
+          <div class="juego">
+            <img src="./../../../assets/imagenes/Math-pi-pencil-board-calculation-512.png"
+              class="img-fluid rounded-circle hoverable roundedImg">
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <button type="button" class="btn btn-outline-warning" routerLink="Agilidad" routerLinkActive="active-link">Jugar</button>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <div class="paramtxt">
+                  <h5>Agilidad aritmética</h5>
+                  <p>Debe responder problemas matematicos</p>
+                  <p>Mientras mas rapido respondas,  mas puntos</p>
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="carousel-item">
+      <div class="carousel-caption d-none d-md-block d-md-block-mine">
+        <div class="juego">
+          <img src="./../../../assets/imagenes/ppt.png"
+            class="img-fluid rounded-circle hoverable roundedImg">
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col"></div>
+            <div class="col">
+              <button type="button" class="btn btn-outline-warning" routerLink="Adivina" routerLinkActive="active-link">Jugar</button>
+            </div>
+            <div class="col"></div>
+          </div>
+          <div class="row">
+            <div class="col"></div>
+            <div class="col">
+              <div class="paramtxt">
+                <h5>Piedra papel tijeras</h5>
+                <p>Competi contra la maquina</p>
+                <p>Sumás puntos si ganas</p>
+              </div>
+            </div>
+            <div class="col"></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
