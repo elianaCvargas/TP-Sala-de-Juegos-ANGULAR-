@@ -1,19 +1,10 @@
-<div class="_contenedor">
-  <div class="container">
-    <div class="row cabecera"></div>
-    <div class="row">
-      <div class="container">
-        <div class="row">
-          <div class="col"></div>
-          <div class="col">
-            <h1 class="title_">{{ nuevoJuego.nombre }}!</h1>
-          </div>
-          <div class="col"></div>
+
+      <div class="container adivina-container">
+        <div>
+          <h1 class="title_">{{ nuevoJuego.nombre }}!</h1>
         </div>
-      </div>
-      <div class="container">
         <div class="row">
-          <div class="col"></div>
+          <!-- <div class="col"></div> -->
           <div class="col">
             <form name="juego">
               <label>ingrese numero: </label>
@@ -23,7 +14,7 @@
               <h1>{{ nuevoJuego.numeroIngresado }}</h1>
 
               <h2 [hidden]="ocultarVerificar">
-                <button *ngIf="nuevoJuego.numeroSecreto != 0" (click)="verificar()" class="btn btn-success btn-lg">
+                <button *ngIf="nuevoJuego.numeroSecreto != 0" (click)="verificar(nuevoJuego)" class="btn btn-success btn-lg">
                   Verificar
                 </button>
               </h2>
@@ -45,21 +36,18 @@
               <h3 [hidden]="nuevoJuego.gano">usted aún no gano</h3>
             </form>
           </div>
-          <div class="col"></div>
+          <!-- <div class="col"></div> -->
         </div>
       </div>
 
-      <div class="container">
+      <!-- <div class="container">
         <div class="row">
-          <div class="col"></div>
+          <div class="col"></div> -->
           <div class="col">
             <div id="snackbar">{{ Mensajes }}</div>
           </div>
-          <div class="col"></div>
-        </div>
-      </div>
+          <!-- <div class="col"></div> -->
+        <!-- </div>
+      </div> -->
 
-    </div>
     <div class="row pie"></div>
-  </div>
-</div>
