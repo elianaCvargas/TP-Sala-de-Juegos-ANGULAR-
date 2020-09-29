@@ -1,21 +1,24 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="juego">
+      <th mat-header-cell *matHeaderCellDef> Juego </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+    </ng-container>
 
+    <ng-container matColumnDef="jugador">
+      <th mat-header-cell *matHeaderCellDef> Jugador </th>
+      <td mat-cell *matCellDef="let element"> {{element.jugador}} </td>
+    </ng-container>
 
+    <ng-container matColumnDef="resultado">
+      <th mat-header-cell *matHeaderCellDef> Resultado </th>
+      <td mat-cell *matCellDef="let element"> {{element.gano}} </td>
+    </ng-container>
 
-<table class="table table-condensed">
-    <thead>
-      <tr>
-        <th>Juego</th>
-        <th>Jugador</th>
-        <th>Resultado</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let juego of listado">
-        <td>{{juego.nombre}} </td>
-        <td>{{juego.jugador}} </td>
-        <td *ngIf="juego.gano">Gano </td>
-        <td *ngIf="!juego.gano">Perdio</td>
-      </tr>
-
-    </tbody>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+  <mat-paginator [pageSizeOptions]="[8, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+

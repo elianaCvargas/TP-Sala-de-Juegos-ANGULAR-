@@ -21,13 +21,13 @@ export class ListadoComponent implements OnInit {
 
   llamaService(){
     console.log("llamaService");
-    this.listadoParaCompartir= this.miServicioJuego.listar();
+    // this.listadoParaCompartir= this.miServicioJuego.listar();
   }
 
   llamaServicePromesa(){
     console.log("llamaServicePromesa");
-    this.miServicioJuego.listarPromesa().then((listado) => {
-        this.listadoParaCompartir = listado;
-    });
+    // this.miServicioJuego.listarPromesa().then((listado) => {
+    //     this.listadoParaCompartir = listado;
+    // });
   }
 }

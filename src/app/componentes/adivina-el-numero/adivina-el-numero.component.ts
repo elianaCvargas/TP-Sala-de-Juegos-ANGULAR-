@@ -37,6 +37,7 @@ export class AdivinaElNumeroComponent implements OnInit {
     if (this.nuevoJuego.verificar()) {
       console.log('antes de enviar');
       this.enviarJuego.emit(this.nuevoJuego);
+
       this.MostarMensaje('Sos un Genio!!!', true);
       this.nuevoJuego.numeroSecreto = 0;
     } else {
