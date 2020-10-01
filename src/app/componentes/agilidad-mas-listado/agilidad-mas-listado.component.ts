@@ -1,20 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { JuegoAgilidad } from 'src/app/clases/juego-agilidad';
+import { JuegoServiceService } from 'src/app/servicios/juego-service.service';
 import { Juego } from '../../clases/juego';
+import { ListadoDeResultadosComponent } from '../listado-de-resultados/listado-de-resultados.component';
+
 @Component({
   selector: 'app-agilidad-mas-listado',
   templateUrl: './agilidad-mas-listado.component.html',
   styleUrls: ['./agilidad-mas-listado.component.scss']
 })
 export class AgilidadMasListadoComponent implements OnInit {
-  public listadoParaCompartir: Array<any>;
-  constructor() { this.listadoParaCompartir = new Array<any>()}
+  public listadoParaCompartir: Array<Juego>;
+  @ViewChild('listadoResultados') listadoResultados: ListadoDeResultadosComponent;
+
+  constructor(private juegosService: JuegoServiceService) {
+    this.listadoParaCompartir = new Array<any>();
+  }
 
   ngOnInit() {
   }
 
-  tomarJuegoTerminado(juego: Juego)
-  {
+  tomarJuegoTerminado(juego: JuegoAgilidad) {
+    this.juegosService.create_NewGame(juego).then(() => {
+      console.log("carla agrego algo");
+    });
     this.listadoParaCompartir.push(juego);
-    console.info("en app",this.listadoParaCompartir);
+    this.listadoResultados.refresh();
   }
 }

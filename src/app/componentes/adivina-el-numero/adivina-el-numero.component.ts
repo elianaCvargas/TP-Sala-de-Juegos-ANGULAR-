@@ -15,6 +15,7 @@ export class AdivinaElNumeroComponent implements OnInit {
   contador: number;
   ocultarVerificar: boolean;
   numeroSecretoGenerado: boolean;
+  esGanador: boolean = false;
 
   constructor() {
     this.nuevoJuego = new JuegoAdivina('Nombre', false, 'username');
@@ -35,10 +36,10 @@ export class AdivinaElNumeroComponent implements OnInit {
     this.ocultarVerificar = true;
     console.info('numero Secreto:', this.nuevoJuego.gano);
     if (this.nuevoJuego.verificar()) {
-      console.log('antes de enviar');
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje('Sos un Genio!!!', true);
       this.nuevoJuego.numeroSecreto = 0;
+      this.esGanador = true;
     } else {
       let mensaje: string;
       switch (this.contador) {
@@ -65,23 +66,27 @@ export class AdivinaElNumeroComponent implements OnInit {
           mensaje = 'Ya le erraste ' + this.contador + ' veces';
           break;
       }
-
-      this.MostarMensaje(
-        '#' +
-          this.contador +
-          ' ' +
-          mensaje +
-          ' ayuda :' +
-          this.nuevoJuego.retornarAyuda()
-      );
+      if (this.contador < 7) {
+        this.MostarMensaje(
+          '#' +
+            this.contador +
+            ' ' +
+            mensaje +
+            ' ayuda :' +
+            this.nuevoJuego.retornarAyuda()
+        );
+      } else {
+        this.MostarMensaje('Lo siento, numero de intentos finalizados', false);
+        this.nuevoJuego.numeroSecreto = 0;
+        this.enviarJuego.emit(this.nuevoJuego);
+        this.MostarMensaje('Sos un Genio!!!', true);
+        this.esGanador = false;
+      }
     }
     console.info('numero Secreto:', this.nuevoJuego.gano);
   }
 
-  MostarMensaje(
-    mensaje: string = 'este es el mensaje',
-    ganador: boolean = false
-  ) {
+  MostarMensaje(mensaje: string, ganador: boolean = false) {
     this.Mensajes = mensaje;
     var x = document.getElementById('snackbar');
     if (ganador) {
