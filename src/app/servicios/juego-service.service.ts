@@ -16,8 +16,8 @@ export class JuegoServiceService {
     return this.firestore.collection('juegos').add({...juegos});
   }
 
-  read_Students() {
-    return this.firestore.collection('Students').snapshotChanges();
+  read_AllGames() :Observable<Juego[]>{
+     return this.firestore.collection<Juego>('juegos').valueChanges();
   }
 
   update_Student(recordID,record){

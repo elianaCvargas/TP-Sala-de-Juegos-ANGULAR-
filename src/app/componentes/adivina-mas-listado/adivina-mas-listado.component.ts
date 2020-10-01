@@ -30,7 +30,4 @@ export class AdivinaMasListadoComponent implements OnInit {
     this.listadoParaCompartir.push(juego);
     this.listadoResultados.refresh();
   }
-
-  //aca debo cargar los juegos
-
 }

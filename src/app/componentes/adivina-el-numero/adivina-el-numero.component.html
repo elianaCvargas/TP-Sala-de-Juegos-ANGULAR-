@@ -32,22 +32,17 @@
                 </p>
               </h2>
 
-              <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-              <h3 [hidden]="nuevoJuego.gano">usted aún no gano</h3>
+              <h3 *ngIf="esGanador">usted adivino el número</h3>
+              <h3 *ngIf="!esGanador">usted aún no gano</h3>
             </form>
           </div>
-          <!-- <div class="col"></div> -->
         </div>
       </div>
 
-      <!-- <div class="container">
-        <div class="row">
-          <div class="col"></div> -->
+
           <div class="col">
             <div id="snackbar">{{ Mensajes }}</div>
           </div>
-          <!-- <div class="col"></div> -->
-        <!-- </div>
-      </div> -->
+
 
     <div class="row pie"></div>

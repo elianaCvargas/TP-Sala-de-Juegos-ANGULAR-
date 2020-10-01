@@ -1,10 +1,15 @@
 
-<ul class="nav nav-pills nav-justified">
-    <li class="active"><a routerLink="/Principal">Sala de Juegos</a></li>
-    <li><a (click)="llamaService()">Servicio</a></li>
-    <li><a (click)="llamaServicePromesa()">Serv Promesa</a></li>
-    <li><a (click)="llamaServicePromesa()">Serv observable</a></li>
-  </ul>
 
-<app-listado-de-resultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+<div class="_contenedor">
+  <div class="container">
+    <div class="row cabecera"></div>
+    <div class="row">
+      <div class="col listado-col">
+        <h1 class="h1-center"> Ranking juegos </h1>
+        <app-listado-de-resultados #listadoResultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+      </div>
+    </div>
+    <div class="row pie"></div>
+  </div>
+</div>
 

@@ -28,6 +28,7 @@ import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-pu
 const MiRuteo = [
   { path: 'Registro', component: RegistroComponent },
   { path: '', redirectTo: 'Principal', pathMatch: 'full' },
+
   { path: 'Principal', component: PrincipalComponent,
     children: [
       { path: '', redirectTo: 'Login', pathMatch: 'full' },
@@ -51,6 +52,14 @@ const MiRuteo = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+    ],
+  },
+  {
+    path: 'Ranking',
+    component: PrincipalComponent,
+    children: [
+      { path: '', component: MenuCardComponent },
+      { path: 'Listado', component: ListadoComponent },
     ],
   },
   { path: '**', component: ErrorComponent },

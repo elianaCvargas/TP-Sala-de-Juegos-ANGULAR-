@@ -56,13 +56,12 @@ export class AgilidadAritmeticaComponent implements OnInit {
     console.info('agilidad aritmetica:', this.nuevoJuego.gano);
 
     if (this.nuevoJuego.verificar()) {
-      console.log('antes de enviar');
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje('Sos un Genio!!!', true);
 
     } else {
       let mensaje: string;
-      mensaje = 'Lo siento, necesitas mejorar tu abilidad con la caluculadora master';
+      mensaje = 'Lo siento, necesitas mejorar tu habilidad con la calculadora master';
     }
 
     this.nuevoJuego.resultado = 0;

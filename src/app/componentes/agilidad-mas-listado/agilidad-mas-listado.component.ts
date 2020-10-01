@@ -21,10 +21,9 @@ export class AgilidadMasListadoComponent implements OnInit {
   }
 
   tomarJuegoTerminado(juego: JuegoAgilidad) {
-    console.log("en app",juego);
-    // this.juegosService.create_NewGame(juego).then(() => {
-    //   console.log("carla agrego algo");
-    // });
+    this.juegosService.create_NewGame(juego).then(() => {
+      console.log("carla agrego algo");
+    });
     this.listadoParaCompartir.push(juego);
     this.listadoResultados.refresh();
   }
