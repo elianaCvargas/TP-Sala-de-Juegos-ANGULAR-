@@ -18,6 +18,6 @@ datodevuelto;
       console.log("succes");
       //por ahora hare el routing desde aca,  la idea es modificar esto
       this.route.navigate(['Juegos']);
-    }).catch(err => { console.log("error")});
+    }).catch(err => { console.log(err)});
   }
 }
