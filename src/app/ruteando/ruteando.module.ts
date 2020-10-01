@@ -22,6 +22,8 @@ import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/lista
 import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-google.component';
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-public-layout.component';
+import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
+import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
 // import { PublicGuard, ProtectedGuard } from 'ngx-auth';
 
 // declaro donde quiero que se dirija
@@ -36,7 +38,6 @@ const MiRuteo = [
       { path: 'Jugadores', component: JugadoresListadoComponent },
       { path: 'Login', component: LoginComponent },
       { path: 'Mapa', component: MapaDeGoogleComponent },
-      { path: 'QuienSoy', component: QuienSoyComponent },
       { path: 'Listado', component: ListadoComponent },
       { path: 'Paises', component: ListadoDePaisesComponent },
       // {path: 'Juegos', component: JuegosComponent}
@@ -52,6 +53,8 @@ const MiRuteo = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+      { path: 'Anagrama', component: AnagramaMasListadoComponent },
+      { path: 'Tateti', component: TatetiMasListadoComponent },
     ],
   },
   {
