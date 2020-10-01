@@ -1,11 +1,11 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    apiKey: 'AIzaSyBmm3dVk57cIE386P2In7MTLsSZ9y_6Qu8',
+    authDomain: 'saladejuegos-app.web.app',
+    databaseURL: 'gs://saladejuegos-app.appspot.com',
+    projectId: 'saladejuegos-app',
+    storageBucket: '',
+    messagingSenderId: '718871633595'
   }
 };
