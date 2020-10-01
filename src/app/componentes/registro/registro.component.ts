@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
@@ -8,7 +9,9 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./registro.component.scss']
 })
 export class RegistroComponent implements OnInit {
-
+  public username;
+  public password;
+  userGroup: FormGroup;
  /* constructor( private miConstructor:FormBuilder) { }
   email=new FormControl('',[Validators.email]);
   formRegistro:FormGroup=this.miConstructor.group({
