@@ -1,0 +1,59 @@
+
+      <div class="container piedra-papel-tijera-container">
+        <div>
+          <h1 class="title_">{{ nuevoJuego.nombre }}!</h1>
+        </div>
+        <div class="row">
+          <!-- <div class="col"></div> -->
+          <div class="col">
+            <form name="juego">
+
+              <h2 [hidden]="ocultarSeleccion">
+                <h2 *ngIf="nuevoJuego.seleccionIA != 0">Seleccionar Opcion</h2>
+                <button *ngIf="nuevoJuego.seleccionIA != 0" (click)="seleccionarOpcion(1)" class="btn btn-info btn-lg">
+                  Piedra
+                </button>
+                <button *ngIf="nuevoJuego.seleccionIA != 0" (click)="seleccionarOpcion(2)" class="btn btn-info btn-lg">
+                  Papel
+                </button>
+                <button *ngIf="nuevoJuego.seleccionIA != 0" (click)="seleccionarOpcion(3)" class="btn btn-info btn-lg">
+                  Tijera
+                </button>
+              </h2>
+
+              <h2 *ngIf="!esFinJuego">Opcion Seleccionada: {{ nuevoJuego.seleccionNombre }}</h2>
+              <h2 *ngIf="esFinJuego">Mi jugada: {{ nuevoJuego.seleccionNombre }} vs IA: {{ nuevoJuego.seleccionIANombre }}</h2>
+
+              <h2 [hidden]="ocultarVerificar">
+                <button *ngIf="nuevoJuego.seleccionIA != 0" (click)="verificar(nuevoJuego)" class="btn btn-success btn-lg button_verificar">
+                  Verificar
+                </button>
+              </h2>
+
+              <h2>
+                <button *ngIf="nuevoJuego.seleccionIA == 0" (click)="generarseleccion()" class="btn btn-info btn-lg button_verificar">
+                  Nuevo juego
+                </button>
+              </h2>
+
+              <h2>
+                <p *ngIf="nuevoJuego.seleccionIA != 0">
+                  <i class="fa fa-spinner fa-spin"></i>Esperando que seleccione una
+                  opción
+                </p>
+              </h2>
+
+              <h3 *ngIf="esGanador && esFinJuego">Capo de los capos</h3>
+              <h3 *ngIf="!esGanador && esFinJuego">Usted aún no gano</h3>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+          <div class="col">
+            <div id="snackbar">{{ Mensajes }}</div>
+          </div>
+
+
+    <div class="row pie"></div>

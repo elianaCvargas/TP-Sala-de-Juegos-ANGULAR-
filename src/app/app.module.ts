@@ -22,6 +22,8 @@ import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/a
 import { MenuComponent } from './componentes/menu/menu.component';
 import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
+import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { PiedraPapelTijeraMasListadoComponent } from './componentes/piedra-papel-tijera-mas-listado/piedra-papel-tijera-mas-listado.component';
 import { RuteandoModule } from './ruteando/ruteando.module';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
@@ -72,6 +74,8 @@ import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tate
     MenuComponent,
     AdivinaMasListadoComponent,
     AgilidadMasListadoComponent,
+    PiedraPapelTijeraComponent,
+    PiedraPapelTijeraMasListadoComponent,
     ListadoComponent,
     ListadosComponent,
     JuegosComponent,
