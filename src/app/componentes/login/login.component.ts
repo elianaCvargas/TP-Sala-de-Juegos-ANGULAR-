@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   animal;
   userGroup: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService
+  constructor(private route: Router, private router: Router, private authService: AuthService
     ,private dialog: MatDialog) {
 
   }
@@ -43,8 +43,10 @@ export class LoginComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      if(localStorage.getItem("isLogged") != undefined)
+      {
+        this.route.navigate(['Juegos']);
+      }
     });
   }
 
@@ -52,7 +54,7 @@ export class LoginComponent implements OnInit {
   {
     this.username = this.userGroup.get('username').value;
     this.password =  this.userGroup.get('password').value;
-    this.authService.login(this.username, this.password)
+    this.authService.login(this.username, this.password);
 
   }
 

@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { AuthService } from 'src/app/servicios/auth.service';
 //para poder hacer las validaciones
 //import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
@@ -12,23 +13,19 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 export class RegistroComponent implements OnInit {
   public username;
   userGroup: FormGroup;
- /* constructor( private miConstructor:FormBuilder) { }
-  email=new FormControl('',[Validators.email]);
-  formRegistro:FormGroup=this.miConstructor.group({
-    usuario:this.email
-  });*/
+public isRegistered: boolean = false;
 
   ngOnInit() {
   }
 
   constructor(
-    public dialogRef: MatDialogRef<RegistroComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,  public builder: FormBuilder) {
+    public dialogRef: MatDialogRef<RegistroComponent>, private authService: AuthService
+    , @Inject(MAT_DIALOG_DATA) public data: DialogData,  public builder: FormBuilder) {
       this.userGroup = this.builder.group({
         username: [null, Validators.required],
         email: [null, [Validators.required, Validators.email]],
         password1: [null, Validators.required],
-        password2: [null, [Validators.required, this.passwordMatcher1.bind(this)]],
+        password2: [null, [Validators.required, this.passwordMatcher1.bind(this), this.morethanfive.bind(this)]],
       });
     }
 
@@ -36,16 +33,23 @@ export class RegistroComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onSubmit(){}
+  onSubmit(){
+    this.isRegistered = true;
+    this.authService.register(this.userGroup.controls.email.value
+      ,this.userGroup.controls.password1.value, this.userGroup.controls.username.value);
+
+  }
 
   private passwordMatcher1(control: FormControl): { [s: string]: boolean } {
-    if (
-      this.userGroup &&
-      (control.value !== this.userGroup.controls.password1.value)
-    ) {
+    if (this.userGroup && (control.value !== this.userGroup.controls.password1.value))
+    {
       return { passwordNotMatch: true };
     }
     return null;
+  }
+
+  morethanfive(){
+
   }
 
   get password1(): AbstractControl {
@@ -62,9 +66,11 @@ export class RegistroComponent implements OnInit {
     } else {
       this.password2.setErrors({ passwordNotMatch: true });
     }
+
   }
 
 }
+
 export interface DialogData {
   username: string;
   password: string;

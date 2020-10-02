@@ -1,21 +1,3 @@
-<!-- <h1 mat-dialog-title>Registro</h1>
-<form [formGroup]="userGroup">
-  <div mat-dialog-content>
-    <p>Complete los campos, por favor</p>
-    <mat-form-field>
-      <mat-label>Favorite Animal</mat-label>
-      <input matInput [(ngModel)]="data.username">
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Favorite Animal</mat-label>
-      <input matInput [(ngModel)]="data.username">
-    </mat-form-field>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-  </div>
-</form> -->
 
 <div class="card-header headerC">
   <h3>Registro</h3>
@@ -42,7 +24,7 @@
     <div *ngIf="userGroup.controls.email.invalid && (userGroup.controls.email.dirty || userGroup.controls.email.touched)">
       <div *ngIf="userGroup.controls.email.errors">
         <br>
-        <p style="color:red;font-size: 12px;">Debe ingresar un correo electrónico</p>
+        <p style="color:red;font-size: 12px;">Debe ingresar un correo electrónico válido</p>
       </div>
     </div>
   </div>
@@ -61,60 +43,23 @@
     </div>
     <input type="password" class="form-control" placeholder="password" formControlName="password2"
       (change)="onPasswordChange()">
+      <div
+      *ngIf="userGroup.controls.password2.invalid && (userGroup.controls.password2.dirty || userGroup.controls.password2.touched)">
+      <div *ngIf="userGroup.controls.password2.errors">
+        <br>
+        <p style="color:red;font-size: 16px;">Las contraseñas no corresponden o no contiene la cantidad de caracteres permitidos: 6</p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group" *ngIf="this.isRegistered">
+    <p style="color: #FFC312;font-size: 20px;">Se ha registrado con éxito!</p>
   </div>
 
   <div class="form-group">
-    <input type="submit" class="btn float-right login_btn" (click)="onSubmit()" [formGroup]="userGroup">
+    <input  [disabled]="!userGroup.valid" type="submit" class="btn float-right login_btn" (click)="onSubmit()" [formGroup]="userGroup">
   </div>
 
-  <div
-    *ngIf="userGroup.controls.password2.invalid && (userGroup.controls.password2.dirty || userGroup.controls.password2.touched)">
-    <div *ngIf="userGroup.controls.password2.errors">
-      <br>
-      <p style="color:red;font-size: 16px;">Las contraseñas no corresponden</p>
-    </div>
-  </div>
+
 
 </form>
 
-
-
-
-<!-- <body>
-
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">×</span>
-    <form class="modal-content animate" [formGroup]="userGroup">
-      <div class="container">
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Ingresa tu correo" name="email" required>
-
-        <label><b>Clave</b></label>
-        <input type="password" placeholder="Aca la clave" name="psw" required>
-
-        <label><b>Repita la clave</b></label>
-        <input type="password" placeholder="Aca repeti la misa clave  de arriba" name="psw-repeat" required>
-        <input type="checkbox" checked="checked">Recordar mis datos
-        <p>creando la cuenta aceptando los<a  onclick="document.getElementById('id01').style.display='none'"  >Terminos y condiciones</a>.</p>
-
-        <div class="clearfix">
-          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Me arrepenti</button>
-          <button type="submit" class="signupbtn">Registrarme</button>
-        </div>
-      </div>
-    </form>
-  </div>
-
-  <script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
-
-  </body> -->

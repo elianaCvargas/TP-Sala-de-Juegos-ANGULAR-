@@ -13,11 +13,22 @@ datodevuelto;
     this.auth.signInWithEmailAndPassword(email, pass)
     .then( res => {
       localStorage.setItem("isLogged", "succes");
-      localStorage.setItem("username", res.user.email);
+      localStorage.setItem("email", res.user.email);
 
       console.log("succes");
       //por ahora hare el routing desde aca,  la idea es modificar esto
       this.route.navigate(['Juegos']);
+    }).catch(err => { console.log(err)});
+  }
+
+  register(email: string, pass: string, username: string)
+  {
+    this.auth.createUserWithEmailAndPassword(email, pass)
+    .then( res => {
+      localStorage.setItem("isLogged", "succes");
+      localStorage.setItem("email", res.user.email);
+      localStorage.setItem("username", username);
+
     }).catch(err => { console.log(err)});
   }
 }
