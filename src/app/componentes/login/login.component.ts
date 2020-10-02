@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import { AuthService } from 'src/app/servicios/auth.service';
+import { RegistroComponent } from '../registro/registro.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,9 +15,11 @@ export class LoginComponent implements OnInit {
 
   public username;
   public password;
+  animal;
   userGroup: FormGroup;
 
-  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthService
+    ,private dialog: MatDialog) {
 
   }
 
@@ -32,7 +36,17 @@ export class LoginComponent implements OnInit {
   //     this.router.navigate(['/Principal']);
   //   }
   // }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RegistroComponent, {
+      width: '500px',
+      data: {name: this.username, animal: this.password}
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
 
   onSubmit()
   {

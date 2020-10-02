@@ -61,6 +61,7 @@ import { TatetiMasListadoComponent } from './componentes/tateti-mas-listado/tate
 import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { TatetiCuadradoComponent } from './componentes/tateti/tateti-cuadrado/tateti-cuadrado.component';
 import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tateti-tablero.component';
+import { TerminosCondicionesComponent } from './componentes/terminos-condiciones/terminos-condiciones.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tate
     TatetiMasListadoComponent,
     TatetiComponent,
     TatetiCuadradoComponent,
-    TatetiTableroComponent
+    TatetiTableroComponent,
+    TerminosCondicionesComponent
   ],
   imports: [
     BrowserModule,
