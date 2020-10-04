@@ -10,8 +10,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { AvisoDialogModel, CartelInformeComponent } from '../cartel-informe/cartel-informe.component';
-//para poder hacer las validaciones
-//import { Validators, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',

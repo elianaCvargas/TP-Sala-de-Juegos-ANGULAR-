@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { promise } from 'protractor';
 import { observable, Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
 
@@ -22,20 +23,21 @@ export class AuthService {
     public dialog: MatDialog
   ) {}
 
-  login(email: string, pass: string) {
-    this.auth
+  login(email: string, pass: string): Promise<any> {
+    return this.auth
       .signInWithEmailAndPassword(email, pass)
       .then((res) => {
         localStorage.setItem('isLogged', 'succes');
         localStorage.setItem('email', res.user.email);
-
         console.log('succes');
-
-
         this.route.navigate(['Juegos']);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.code == 'auth/wrong-password') {
+          this.message = 'Contraseña incorrecta';
+        }
+
+        return Promise.reject(this.message);
       });
   }
 
@@ -54,9 +56,7 @@ export class AuthService {
         return res;
       })
       .catch((err) => {
-
-        switch(err.code)
-        {
+        switch (err.code) {
           case 'auth/email-already-in-use':
             this.message = 'Ya existe otro usuario con el mail ingresado';
             break;

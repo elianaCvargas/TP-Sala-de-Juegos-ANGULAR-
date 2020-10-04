@@ -16,8 +16,9 @@ export class AdivinaElNumeroComponent implements OnInit {
   ocultarVerificar: boolean;
   numeroSecretoGenerado: boolean;
   esGanador: boolean = false;
-
+  username
   constructor() {
+
     this.nuevoJuego = new JuegoAdivina('Nombre', false, 'username');
     console.info('numero Secreto:', this.nuevoJuego.numeroSecreto);
     this.ocultarVerificar = false;
@@ -79,7 +80,7 @@ export class AdivinaElNumeroComponent implements OnInit {
         this.MostarMensaje('Lo siento, numero de intentos finalizados', false);
         this.nuevoJuego.numeroSecreto = 0;
         this.enviarJuego.emit(this.nuevoJuego);
-        this.MostarMensaje('Sos un Genio!!!', true);
+        this.MostarMensaje('Loser!', false);
         this.esGanador = false;
       }
     }
@@ -98,7 +99,6 @@ export class AdivinaElNumeroComponent implements OnInit {
     setTimeout(function () {
       x.className = x.className.replace('show', '');
       modelo.ocultarVerificar = false;
-    }, 3000);
-    console.info('objeto', x);
+    }, 2000);
   }
 }

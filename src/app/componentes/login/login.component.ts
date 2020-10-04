@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
 import { AuthService } from 'src/app/servicios/auth.service';
+import { AvisoDialogModel, CartelInformeComponent } from '../cartel-informe/cartel-informe.component';
 import { RegistroComponent } from '../registro/registro.component';
 @Component({
   selector: 'app-login',
@@ -54,7 +55,15 @@ export class LoginComponent implements OnInit {
   {
     this.username = this.userGroup.get('username').value;
     this.password =  this.userGroup.get('password').value;
-    this.authService.login(this.username, this.password);
+    this.authService.login(this.username, this.password).then((succes) => {
+
+    }).catch((error) => {
+      const dialogData = new AvisoDialogModel('Ha ocurrido un problema!', error);
+        this.dialog.open(CartelInformeComponent, {
+          maxWidth: '400px',
+          data: dialogData,
+        });
+    });
 
   }
 
