@@ -62,6 +62,7 @@ import { TatetiComponent } from './componentes/tateti/tateti.component';
 import { TatetiCuadradoComponent } from './componentes/tateti/tateti-cuadrado/tateti-cuadrado.component';
 import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tateti-tablero.component';
 import { TerminosCondicionesComponent } from './componentes/terminos-condiciones/terminos-condiciones.component';
+import { CartelInformeComponent } from './componentes/cartel-informe/cartel-informe.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +100,8 @@ import { TerminosCondicionesComponent } from './componentes/terminos-condiciones
     TatetiComponent,
     TatetiCuadradoComponent,
     TatetiTableroComponent,
-    TerminosCondicionesComponent
+    TerminosCondicionesComponent,
+    CartelInformeComponent
   ],
   imports: [
     BrowserModule,
