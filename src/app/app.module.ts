@@ -65,6 +65,7 @@ import { TatetiCuadradoComponent } from './componentes/tateti/tateti-cuadrado/ta
 import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tateti-tablero.component';
 import { TerminosCondicionesComponent } from './componentes/terminos-condiciones/terminos-condiciones.component';
 import { CartelInformeComponent } from './componentes/cartel-informe/cartel-informe.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,7 @@ import { CartelInformeComponent } from './componentes/cartel-informe/cartel-info
   ],
   providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
   ,JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService
-, AuthService],
+, AuthService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,14 +8,8 @@ export class JuegoAdivina extends Juego {
   }
 
   public verificar() {
-    if (this.numeroIngresado == this.numeroSecreto) {
-      this.gano = true;
-    }
-    if (this.gano) {
-      return true;
-    } else {
-      return false;
-    }
+    this.gano = this.numeroIngresado == this.numeroSecreto ? true : false;
+    return this.gano;
   }
 
   public generarnumero() {

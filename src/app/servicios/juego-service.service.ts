@@ -20,6 +20,14 @@ export class JuegoServiceService {
      return this.firestore.collection<Juego>('juegos').valueChanges();
   }
 
+  read_AllGamesByEmail(email:string) :Observable<Juego[]>{
+    var juegos =  this.firestore.collection<Juego>(
+      'juegos',
+      (ref) => ref.where('jugador',  '==', email)
+    );
+    return juegos.valueChanges();
+ }
+
   update_Student(recordID,record){
     this.firestore.doc('Students/' + recordID).update(record);
   }

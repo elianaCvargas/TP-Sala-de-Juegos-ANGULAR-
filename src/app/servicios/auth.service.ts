@@ -48,11 +48,6 @@ export class AuthService {
         localStorage.setItem('isLogged', 'succes');
         localStorage.setItem('email', res.user.email);
         localStorage.setItem('username', username);
-        // const dialogData = new AvisoDialogModel("Mensaje", "Se ha registrado con exito!");
-        // this.dialog.open(CartelInformeComponent, {
-        //   maxWidth: '400px',
-        //   data: dialogData,
-        // });
         return res;
       })
       .catch((err) => {

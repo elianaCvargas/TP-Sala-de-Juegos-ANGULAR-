@@ -9,6 +9,7 @@ import { ListadoDeResultadosComponent } from '../listado-de-resultados/listado-d
   styleUrls: ['./adivina-mas-listado.component.scss'],
 })
 export class AdivinaMasListadoComponent implements OnInit {
+  public email: string;
   public listadoParaCompartir: Array<Juego>;
   @ViewChild('listadoResultados') listadoResultados: ListadoDeResultadosComponent;
 
@@ -16,14 +17,16 @@ export class AdivinaMasListadoComponent implements OnInit {
     this.listadoParaCompartir = new Array<any>();
   }
 
-  ngOnInit() {}
-
-  // function a(b,c) { return "hola" };
-  // var fnc = (b,c) => { return "hola" };
-  // fnc(1,2);
+  ngOnInit() {
+    this.email = localStorage.getItem("email");
+    this.juegosService.read_AllGamesByEmail(this.email)
+    .subscribe((juegos: JuegoAdivina[]) => {
+      this.listadoResultados.listado = juegos;
+      this.listadoResultados.refresh();
+    });
+  }
 
   tomarJuegoTerminado(juego: JuegoAdivina) {
-    console.log("en app",juego);
     this.juegosService.create_NewGame(juego).then(() => {
       console.log("carla agrego algo");
     });
