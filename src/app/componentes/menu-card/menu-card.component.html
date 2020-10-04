@@ -7,6 +7,7 @@
         <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
       </ol>
     </div>
     <div class="carousel-inner">
@@ -162,7 +163,38 @@
                   <p>Competi contra la maquina</p>
                   <p>Sumás puntos si ganas</p>
                   <h6 class="text-warning">Para poder jugar tenes que registrarte</h6>
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="carousel-item">
+        <div class="carousel-caption d-none d-md-block d-md-block-mine">
+          <div class="juego">
+            <img src="./../../../assets/imagenes/ahorcado-logo.png" class="img-fluid rounded-circle hoverable roundedImg" />
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <button  [disabled]="!this.userIsLogged" type="button" class="btn btn-outline-warning" routerLink="Ahorcado"
+                  routerLinkActive="active-link">
+                  Jugar
+                </button>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <div class="paramtxt">
+                  <h5>Ahorcado</h5>
+                  <p>Encontrá la palabra secreta</p>
+                  <p>Sumás puntos si ganas</p>
+                  <h6 class="text-warning">Para poder jugar tenes que registrarte</h6>
                 </div>
               </div>
               <div class="col"></div>

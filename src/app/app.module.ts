@@ -39,6 +39,8 @@ import { MenuCardComponent } from './componentes/menu-card/menu-card.component';
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { QuienSoyComponent } from './componentes/quien-soy/quien-soy.component';
 import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
+import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { AhorcadoMasListadoComponent } from './componentes/ahorcado-mas-listado/ahorcado-mas-listado.component';
 import { ListadoDePaisesComponent } from './componentes/listado-de-paises/listado-de-paises.component';
 import { MapaDeGoogleComponent } from './componentes/mapa-de-google/mapa-de-google.component'
 import { AgmCoreModule } from '@agm/core';
@@ -78,6 +80,8 @@ import { CartelInformeComponent } from './componentes/cartel-informe/cartel-info
     AgilidadMasListadoComponent,
     PiedraPapelTijeraComponent,
     PiedraPapelTijeraMasListadoComponent,
+    AhorcadoComponent,
+    AhorcadoMasListadoComponent,
     ListadoComponent,
     ListadosComponent,
     JuegosComponent,

@@ -13,6 +13,8 @@ import { AdivinaMasListadoComponent } from '../componentes/adivina-mas-listado/a
 import { AgilidadMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { PiedraPapelTijeraMasListadoComponent } from '../componentes/piedra-papel-tijera-mas-listado/piedra-papel-tijera-mas-listado.component';
+import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
+import { AhorcadoMasListadoComponent } from '../componentes/ahorcado-mas-listado/ahorcado-mas-listado.component';
 // import { PiedraPapelTijeraMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { ListadoComponent } from '../componentes/listado/listado.component';
 import { ListadosComponent } from '../componentes/listados/listados.component';
@@ -61,6 +63,9 @@ const MiRuteo = [
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
+      { path: 'PiedraPapelTijeraMasListado', component: PiedraPapelTijeraMasListadoComponent },
+      { path: 'Ahorcado', component: AhorcadoComponent },
+      { path: 'AhorcadoMasListado', component: AhorcadoMasListadoComponent },
       {
         path: 'PiedraPapelTijeraMasListado',
         component: PiedraPapelTijeraMasListadoComponent,
