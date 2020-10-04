@@ -1,0 +1,61 @@
+
+      <div class="container ahorcado-container">
+        <div>
+          <h1 class="title_">{{ nuevoJuego.nombre }}!</h1>
+        </div>
+        <div class="row">
+          <!-- <div class="col"></div> -->
+          <div class="col">
+            <form name="juego">
+
+              <div style="align-items: center; margin-bottom: 20px;">
+                <img *ngIf="contador == 0" src="./../../../assets/imagenes/ahorcado-base.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 1" src="./../../../assets/imagenes/ahorcado-1.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 2" src="./../../../assets/imagenes/ahorcado-2.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 3" src="./../../../assets/imagenes/ahorcado-3.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 4" src="./../../../assets/imagenes/ahorcado-4.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 5" src="./../../../assets/imagenes/ahorcado-5.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 6" src="./../../../assets/imagenes/ahorcado-6.png" class="img-fluid hoverable roundedImg image-style">
+                <img *ngIf="contador == 7" src="./../../../assets/imagenes/ahorcado-7.png" class="img-fluid hoverable roundedImg image-style">
+                <h2 *ngIf="palabraSecretaGenerada">{{nuevoJuego.palabraProgreso}}</h2>
+              </div>
+
+              <label>Ingrese letra: </label>
+              <input [disabled]="!palabraSecretaGenerada" [(ngModel)]="nuevoJuego.letraIngresada"
+                placeholder="Ingrese numero" name="letraIngresada" type="text" class="form-control"
+                style="width: 50%; margin-left: 20px" />
+              <h1>{{ nuevoJuego.letraIngresada }}</h1>
+
+              <h2 [hidden]="ocultarVerificar">
+                <button *ngIf="palabraSecretaGenerada" (click)="verificar(nuevoJuego)" class="btn btn-success btn-lg">
+                  Verificar
+                </button>
+              </h2>
+
+              <h2>
+                <button *ngIf="!palabraSecretaGenerada" (click)="generarpalabra()" class="btn btn-info btn-lg">
+                  Nueva palabra
+                </button>
+              </h2>
+
+              <h2>
+                <p *ngIf="nuevoJuego.letraIngresada.length != 0">
+                  <i class="fa fa-spinner fa-spin"></i>Esperando que ingrese una
+                  letra
+                </p>
+              </h2>
+
+              <h3 *ngIf="esGanador">usted adivino la palabra secreta</h3>
+              <h3 *ngIf="!esGanador">usted aún no gano</h3>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+          <div class="col">
+            <div id="snackbar">{{ Mensajes }}</div>
+          </div>
+
+
+    <div class="row pie"></div>

@@ -11,6 +11,10 @@ import { AgilidadAritmeticaComponent } from '../componentes/agilidad-aritmetica/
 import { MenuComponent } from '../componentes/menu/menu.component';
 import { AdivinaMasListadoComponent } from '../componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
+import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { PiedraPapelTijeraMasListadoComponent } from '../componentes/piedra-papel-tijera-mas-listado/piedra-papel-tijera-mas-listado.component';
+import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
+import { AhorcadoMasListadoComponent } from '../componentes/ahorcado-mas-listado/ahorcado-mas-listado.component';
 import { ListadoComponent } from '../componentes/listado/listado.component';
 import { ListadosComponent } from '../componentes/listados/listados.component';
 import { JuegosComponent } from '../componentes/juegos/juegos.component';
@@ -48,10 +52,13 @@ const MiRuteo = [
     component: JuegosComponent,
     children: [
       { path: '', component: MenuCardComponent },
-      // { path: 'Adivina', component: AdivinaElNumeroComponent },
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
+      { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
+      { path: 'PiedraPapelTijeraMasListado', component: PiedraPapelTijeraMasListadoComponent },
+      { path: 'Ahorcado', component: AhorcadoComponent },
+      { path: 'AhorcadoMasListado', component: AhorcadoMasListadoComponent },
     ],
   },
   {
