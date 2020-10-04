@@ -14,6 +14,7 @@ import { MiHttpService } from './servicios/mi-http/mi-http.service';
 import { PaisesService } from './servicios/paises.service';
 
 import { JugadoresService } from './servicios/jugadores.service';
+import { AuthService } from './servicios/auth.service';
 import{ ArchivosJugadoresService} from './servicios/archivos-jugadores.service';
 import { ErrorComponent } from './componentes/error/error.component';
 import { PrincipalComponent } from './componentes/principal/principal.component';
@@ -57,6 +58,13 @@ import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AnagramaMasListadoComponent } from './componentes/anagrama-mas-listado/anagrama-mas-listado.component';
+import { TatetiMasListadoComponent } from './componentes/tateti-mas-listado/tateti-mas-listado.component';
+import { TatetiComponent } from './componentes/tateti/tateti.component';
+import { TatetiCuadradoComponent } from './componentes/tateti/tateti-cuadrado/tateti-cuadrado.component';
+import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tateti-tablero.component';
+import { TerminosCondicionesComponent } from './componentes/terminos-condiciones/terminos-condiciones.component';
+import { CartelInformeComponent } from './componentes/cartel-informe/cartel-informe.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +98,14 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
     SalaPublicLayoutComponent,
     SalaRegistroLayoutComponent,
     AuthLayoutComponent,
-    PieComponent
+    PieComponent,
+    AnagramaMasListadoComponent,
+    TatetiMasListadoComponent,
+    TatetiComponent,
+    TatetiCuadradoComponent,
+    TatetiTableroComponent,
+    TerminosCondicionesComponent,
+    CartelInformeComponent
   ],
   imports: [
     BrowserModule,
@@ -111,7 +126,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 
   ],
   providers: [ { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } }
-  ,JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService],
+  ,JuegoServiceService, MiHttpService,PaisesService,ArchivosJugadoresService,JugadoresService
+, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

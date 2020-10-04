@@ -15,6 +15,7 @@ import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/p
 import { PiedraPapelTijeraMasListadoComponent } from '../componentes/piedra-papel-tijera-mas-listado/piedra-papel-tijera-mas-listado.component';
 import { AhorcadoComponent } from '../componentes/ahorcado/ahorcado.component';
 import { AhorcadoMasListadoComponent } from '../componentes/ahorcado-mas-listado/ahorcado-mas-listado.component';
+// import { PiedraPapelTijeraMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
 import { ListadoComponent } from '../componentes/listado/listado.component';
 import { ListadosComponent } from '../componentes/listados/listados.component';
 import { JuegosComponent } from '../componentes/juegos/juegos.component';
@@ -26,25 +27,31 @@ import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/lista
 import { MapaDeGoogleComponent } from '../componentes/mapa-de-google/mapa-de-google.component';
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-public-layout.component';
+import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
+import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
+// import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
+// import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
 // import { PublicGuard, ProtectedGuard } from 'ngx-auth';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-  { path: 'Registro', component: RegistroComponent },
   { path: '', redirectTo: 'Principal', pathMatch: 'full' },
 
-  { path: 'Principal', component: PrincipalComponent,
+  {
+    path: 'Principal',
+    component: PrincipalComponent,
     children: [
       { path: '', redirectTo: 'Login', pathMatch: 'full' },
       { path: 'QuienSoy', component: QuienSoyComponent },
       { path: 'Jugadores', component: JugadoresListadoComponent },
       { path: 'Login', component: LoginComponent },
       { path: 'Mapa', component: MapaDeGoogleComponent },
-      { path: 'QuienSoy', component: QuienSoyComponent },
       { path: 'Listado', component: ListadoComponent },
       { path: 'Paises', component: ListadoDePaisesComponent },
+      { path: 'Registro', component: RegistroComponent },
+
       // {path: 'Juegos', component: JuegosComponent}
-    ]
+    ],
   },
 
   {
@@ -59,6 +66,12 @@ const MiRuteo = [
       { path: 'PiedraPapelTijeraMasListado', component: PiedraPapelTijeraMasListadoComponent },
       { path: 'Ahorcado', component: AhorcadoComponent },
       { path: 'AhorcadoMasListado', component: AhorcadoMasListadoComponent },
+      {
+        path: 'PiedraPapelTijeraMasListado',
+        component: PiedraPapelTijeraMasListadoComponent,
+      },
+      { path: 'Anagrama', component: AnagramaMasListadoComponent },
+      { path: 'Tateti', component: TatetiMasListadoComponent },
     ],
   },
   {

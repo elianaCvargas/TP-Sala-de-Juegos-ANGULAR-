@@ -1,0 +1,10 @@
+<div>
+  <div class="board-row" *ngFor="let row of tablero; let i = index">
+    <app-tateti-cuadrado *ngFor="let column of row; let j = index" [value]="column" [disabled]="stopPlay"
+      (squareSelection)="emitCoinPlacement(i, j)">
+    </app-tateti-cuadrado>
+  </div>
+  <div class="action-button-container">
+    <button (click)="reset.emit()">Reiniciar</button>
+  </div>
+</div>

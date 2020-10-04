@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import {Subscription} from "rxjs";
+import { AuthService } from 'src/app/servicios/auth.service';
+import { RegistroComponent } from '../registro/registro.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,79 +13,51 @@ import {Subscription} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
-  private subscription: Subscription;
-  usuario = '';
-  clave= '';
-  progreso: number;
-  progresoMensaje="esperando...";
-  logeando=true;
-  ProgresoDeAncho:string;
+  public username;
+  public password;
+  animal;
+  userGroup: FormGroup;
 
-  clase="progress-bar progress-bar-info progress-bar-striped ";
-
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router) {
-      this.progreso=0;
-      this.ProgresoDeAncho="0%";
+  constructor(private route: Router, private router: Router, private authService: AuthService
+    ,private dialog: MatDialog) {
 
   }
 
   ngOnInit() {
+    this.userGroup = new FormGroup({
+      username: new FormControl(''),
+      password: new FormControl(''),
+      // passwordRepeat: new FormControl('')
+    });
   }
 
-  Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/Principal']);
-    }
+  // Entrar() {
+  //   if (this.username === 'admin' && this.password === 'admin') {
+  //     this.router.navigate(['/Principal']);
+  //   }
+  // }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(RegistroComponent, {
+      width: '500px',
+      data: {name: this.username, animal: this.password}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(localStorage.getItem("isLogged") != undefined)
+      {
+        this.route.navigate(['Juegos']);
+      }
+    });
   }
 
-  MoverBarraDeProgreso() {
-//todo
-    // this.logeando=false;
-    // this.clase="progress-bar progress-bar-danger progress-bar-striped active";
-    // this.progresoMensaje="NSA spy...";
+  onSubmit()
+  {
+    this.username = this.userGroup.get('username').value;
+    this.password =  this.userGroup.get('password').value;
+    this.authService.login(this.username, this.password);
 
-    // let timer = TimerObservable.create(200, 50);
-    // this.subscription = timer.subscribe(t => {
-    //   console.log("inicio");
-    //   this.progreso=this.progreso+1;
-    //   this.ProgresoDeAncho=this.progreso+20+"%";
-    //   switch (this.progreso) {
-    //     case 15:
-    //     this.clase="progress-bar progress-bar-warning progress-bar-striped active";
-    //     this.progresoMensaje="Verificando ADN...";
-    //       break;
-    //     case 30:
-    //       this.clase="progress-bar progress-bar-Info progress-bar-striped active";
-    //       this.progresoMensaje="Adjustando encriptación..";
-    //       break;
-    //       case 60:
-    //       this.clase="progress-bar progress-bar-success progress-bar-striped active";
-    //       this.progresoMensaje="Recompilando Info del dispositivo..";
-    //       break;
-    //       case 75:
-    //       this.clase="progress-bar progress-bar-success progress-bar-striped active";
-    //       this.progresoMensaje="Recompilando claves facebook, gmail, chats..";
-    //       break;
-    //       case 85:
-    //       this.clase="progress-bar progress-bar-success progress-bar-striped active";
-    //       this.progresoMensaje="Instalando KeyLogger..";
-    //       break;
-
-    //     case 100:
-    //       console.log("final");
-    //       this.subscription.unsubscribe();
-    //       this.Entrar();
-    //       break;
-    //   }
-    // });
-    //this.logeando=true;
   }
-  hayQueVerInfoAlLoggearse;
-  contrasena;
-  logIn()
-  {}
+
   registrarse()
   {}
   recuperarContra()

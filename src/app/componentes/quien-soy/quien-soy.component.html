@@ -1,124 +1,23 @@
-  <nav class="navbar navbar-default">
+<div class="_contenedor">
     <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="./">Sala De Juegos</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="./QuienSoy#quien">Quien</a></li>
-          <li><a href="/TP_LAV4_2017/QuienSoy#que">Ques es</a></li>
-          <li><a href="./QuienSoy#donde">Donde</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <!-- First Container -->
-  <div id ="quiwn"class="container-fluid bg-1 text-center">
-    <h3 >Quién Soy?</h3>
-    <img src="./assets/imagenes/Perfil.png" class="img-fluid rounded-circle hoverable perfil"  alt="Bird">
-    <h3>Soy Un alumno de la UTN FRA</h3>
-  </div>
-
-  <!-- Second Container -->
-  <div id ="que" class="container-fluid bg-2 text-center">
-    <h3 class="margin">Esto es un trabajo práctico</h3>
-    <p>Cada universidad, cada facultad, cada carrera y obviamente cada materia en particular tiene estrategias didácticas y formas de evaluación diferentes. A pesar de que en muchos casos las universidades intentan estandarizar la forma de dictar clase para generar un orden en las planificaciones cuatrimestre a cuatrimestre, las formas de evaluación son elementales tanto para las instituciones y profesores como para los alumnos. A través de la evaluación formativa el educador busca información en el alumno para lograr comprender cómo se está
-      produciendo el proceso de aprendizaje y poder reajustar los objetivos pedagógicos. Y para el alumno es una muestra del progreso que está logrando y si puede aplicar, materializar y darle visibilidad a la comprensión del tema. Según Black y William (1998), la evaluación formativa, ayuda a que los estudiantes sean independientes a la hora del aprendizaje, es decir, se presenta como receptor, autorregulador y centro de esa misma evaluación. </p>
-    <a href="#" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-file"></span> Descargar PDF
-    </a>
-  </div>
-
-  <!-- Third Container (Grid) -->
-  <div id ="donde" class="container-fluid bg-3 text-center">
-    <h3 class="margin">Dónde Funciona?</h3><br>
-    <div class="row">
-      <div class="col-sm-4">
-        <p>Con las tecnologias WEB que permiten desarrollar aplicaciones multiplataforma</p>
-        <img src="./assets/imagenes/quiensoy1.png" class="img-responsive margin imagenDeQuienSoy"  alt="Image">
-      </div>
-      <div class="col-sm-4">
-        <p>Principalmente orientada a la experiencia del usuario, garantizando que su funcionamieto sea fluido y pensado en el comportamiento del usuario y en la funcionalidad.</p>
-        <img src="./assets/imagenes/quiensoy2.jpg" class="img-responsive margin imagenDeQuienSoy" alt="Image">
-      </div>
-      <div class="col-sm-4">
-        <p>Para los sistemas operativos lideres en el mercado del consumo masivo</p>
-        <img src="./assets/imagenes/quiensoy3.png" class="img-responsive margin imagenDeQuienSoy" alt="Image">
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- <main role="main" style="margin: auto; margin-top: 30px; min-height: 580px;"  class="box-actualizar-contra">
-    <div class="clearfix"></div>
-    <div class="row text-center">
-      <div class="col-md-12 col-sm-12">
-        <a  style="cursor: pointer;"><img src="../../assets/images/sid.png" style="height: 110px; margin-bottom: 40px; margin-top: 60px;" alt=""></a>
-        <br />
-        <h2></h2>
-      </div>
-    </div>
-
-    <div class="row"  style="width: 60%; margin-left: 25%;">
-      <div style="width: 60%;">
-        <form  data-parsley-validate class="form-horizontal form-label-left" #formulario="ngForm"
-        >
-
-        <div class="form-group has-feedback">
-          <input type="text" class="form-control has-feedback-left" id="inputSuccess2"
-            placeholder="*" name="nombre"
-            formControlName="nombre" required>
-        </div>
-
-        <div class="form-group has-feedback">
-          <input class="form-control has-feedback-left" id="inputSuccess2"
-            placeholder="" name="email" formControlName="email" required>
-          <div>
-            <div >
-              <br>
-              <p style="color:red;font-size: 16px;"></p>
-            </div>
+      <div class="row cabecera"></div>
+      <div class="row">
+        <div class="col listado-col rounded">
+          <div id ="quiwn"class="container-fluid bg-1 text-center">
+            <h3 class="h1-center ">Quién Soy?</h3>
+            <img src="./assets/imagenes/Perfil.png" class="img-fluid rounded-circle hoverable perfil"  alt="Bird">
+            <h3 class="h1-center">Soy Un alumno de la UTN FRA</h3>
+            <p class="parrafo">Este es un trabajo practico para la UTN</p>
+            <p class="parrafo">Soy Carla Eliana Vargas, estudiante de 32 años</p>
+            <p class="parrafo">Los juego por el  momento no estan completamente finalizados, falta que las consultas</p>
+            <p class="parrafo">a la base de datos sean mas acorde.</p>
+            <p class="parrafo">Por el momento el registro no funciona</p>
+            <p class="parrafo">PARA JUGAR: para jugar necesitas por el momento loggearte.</p>
+            <p class="parrafo">Por el momento solo podes loggearte con este mail: carla.e.vargas@gmail.com pass: asd123</p>
           </div>
+
         </div>
-
-        <div class="form-group has-feedback" >
-
-          <span class="fa fa-globe form-control-feedback left" aria-hidden="true"></span>
-          <div >
-            <p style="color:red;font-size: 16px;"></p>
-          </div>
-        </div>
-
-        <div class="item form-group">
-          <mat-form-field>
-            <textarea matInput placeholder="asd"
-            class="md-textarea md-textarea-auto form-control" formControlName="descripcionIssue" name="descripcionIssue"
-            required></textarea>y
-          </mat-form-field>
-        </div>
-
-        <div class="form-group">
-          <a>
-              <label for="fileList"><i class="fa fa-upload"> </i>
-                </label>
-          </a>
-          <input type="file" id="fileList" #fileUploader  multiple>
-
-
       </div>
-      <div class="form-group has-feedback">
-        <button type="submit" class="btn-round btn sid-btn-primary"
-          ></button>
-      </div>
-
-        </form>
-      </div>
+      <div class="row pie"></div>
     </div>
-  </main> -->
+  </div>

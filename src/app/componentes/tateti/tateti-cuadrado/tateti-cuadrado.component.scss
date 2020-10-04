@@ -1,0 +1,24 @@
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 2em;
+  height: 2em;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 2em;
+}
+
+  .square:focus {
+    outline: none;
+    background: #ddd;
+  }
+
+  .square.disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
