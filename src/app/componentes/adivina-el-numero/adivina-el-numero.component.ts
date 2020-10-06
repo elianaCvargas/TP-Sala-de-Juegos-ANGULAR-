@@ -1,6 +1,9 @@
 import { DatePipe } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { Documento } from 'src/app/clases/documento';
+import { Ranking } from 'src/app/clases/Ranking';
+import { JuegoServiceService } from 'src/app/servicios/juego-service.service';
 import { JuegoAdivina } from '../../clases/juego-adivina';
 
 @Component({
@@ -17,9 +20,12 @@ export class AdivinaElNumeroComponent implements OnInit {
   ocultarVerificar: boolean;
   numeroSecretoGenerado: boolean;
   esGanador: boolean = false;
+  public puntajeInicial: number = 6;
   public email: string;
   public fechaJuego: string;
-  constructor(private datePipe: DatePipe) {
+  public doc:  Documento<Ranking>;
+
+  constructor(private datePipe: DatePipe, private juegosService: JuegoServiceService) {
     this.nuevoJuego = new JuegoAdivina('Adivina el numero', false);
     console.info('numero Secreto:', this.nuevoJuego.numeroSecreto);
     this.ocultarVerificar = false;
@@ -46,9 +52,22 @@ export class AdivinaElNumeroComponent implements OnInit {
       this.nuevoJuego.jugador = this.email;
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje('Sos un Genio!!!', true);
+      this.juegosService.getRankingByGame(this.nuevoJuego.nombre).subscribe((data) => {
+        data.forEach(element => {
+          this.doc = element;
+        });
+      });
+
+      this.doc.data.jugador = this.nuevoJuego.jugador;
+      this.doc.data.nombre = this.nuevoJuego.nombre;
+      this.doc.data.puntaje = this.puntajeInicial - this.contador;
+
+      this.juegosService.update_Ranking(this.doc);
+
       this.nuevoJuego.numeroSecreto = 0;
       this.esGanador = true;
       this.nuevoJuego = new JuegoAdivina('Adivina el numero', false);
+
     }
     //pierdo
     else {

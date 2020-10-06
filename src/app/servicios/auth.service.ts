@@ -6,11 +6,13 @@ import { Router } from '@angular/router';
 import { promise } from 'protractor';
 import { observable, Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
+import { Jugador } from '../clases/jugador';
 
 import {
   AvisoDialogModel,
   CartelInformeComponent,
 } from '../componentes/cartel-informe/cartel-informe.component';
+import { JuegoServiceService } from './juego-service.service';
 
 @Injectable()
 export class AuthService {
@@ -48,6 +50,7 @@ export class AuthService {
         localStorage.setItem('isLogged', 'succes');
         localStorage.setItem('email', res.user.email);
         localStorage.setItem('username', username);
+
         return res;
       })
       .catch((err) => {

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { JuegoAnagrama } from 'src/app/clases/juego-anagrama';
+import { JuegoPiedraPapelTijera } from 'src/app/clases/juego-piedra-papel-tijera';
 
 @Component({
   selector: 'app-anagrama',
@@ -13,17 +14,20 @@ export class AnagramaComponent implements OnInit {
   contador: number;
   ocultarVerificar: boolean;
   anagramaGenerado: boolean;
+  public email: string;
 
   constructor() {
-    this.nuevoJuego = new JuegoAnagrama(false, 'username');
+    this.nuevoJuego = new JuegoAnagrama(false);
     this.ocultarVerificar = false;
   }
 
   ngOnInit() {
+    this.email = localStorage.getItem("email");
     this.generarAnagrama();
   }
 
   generarAnagrama() {
+    this.nuevoJuego.jugador = this.email;
     this.nuevoJuego.generarAnagrama();
     this.anagramaGenerado = true;
     this.contador = 0;
@@ -32,56 +36,28 @@ export class AnagramaComponent implements OnInit {
   verificar() {
     this.contador++;
     this.ocultarVerificar = true;
-    console.info('numero Secreto:', this.nuevoJuego.gano);
     if (this.nuevoJuego.verificar()) {
-      console.log('antes de enviar');
+      this.nuevoJuego.fecha = new Date;
+      this.nuevoJuego.gano = true;
       this.enviarJuego.emit(this.nuevoJuego);
-
       this.MostarMensaje('Sos un Genio!!!', true);
+      this.nuevoJuego = new JuegoAnagrama();
       this.nuevoJuego.anagrama = '';
+
     } else {
-      let mensaje: string;
-      switch (this.contador) {
-        case 1:
-          mensaje = 'No, intento fallido, animo';
-          break;
-        case 2:
-          mensaje = 'No,Te estaras Acercando???';
-          break;
-        case 3:
-          mensaje = 'No es, Yo crei que la tercera era la vencida.';
-          break;
-        case 4:
-          mensaje = 'Dale que es re fácil.';
-          break;
-        case 5:
-          mensaje = ' intentos y nada.';
-          break;
-        case 6:
-          mensaje = 'Afortunado en el amor';
-          break;
-
-        default:
-          mensaje = 'Ya le erraste ' + this.contador + ' veces';
-          break;
-      }
-
-      this.MostarMensaje(
-        '#' +
-          this.contador +
-          ' ' +
-          mensaje +
-          ' ayuda :' +
-          this.nuevoJuego.retornarAyuda()
-      );
+      this.nuevoJuego.gano = false;
+      this.nuevoJuego.fecha = new Date;
+      this.nuevoJuego.jugador = this.email;
+      this.enviarJuego.emit(this.nuevoJuego);
+      this.nuevoJuego = new JuegoAnagrama();
+     this.MostarMensaje("Era tan simple!", false);
     }
-    console.info('numero Secreto:', this.nuevoJuego.gano);
+
+    this.generarAnagrama();
+
   }
 
-  MostarMensaje(
-    mensaje: string = 'este es el mensaje',
-    ganador: boolean = false
-  ) {
+  MostarMensaje(mensaje: string, ganador: boolean) {
     this.Mensajes = mensaje;
     var x = document.getElementById('snackbar');
     if (ganador) {

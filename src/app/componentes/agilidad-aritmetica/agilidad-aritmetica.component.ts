@@ -2,6 +2,7 @@ import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
 import { JuegoAgilidad } from '../../clases/juego-agilidad'
 
 import {Subscription} from "rxjs";
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
@@ -17,17 +18,20 @@ export class AgilidadAritmeticaComponent implements OnInit {
   ocultarVerificar: boolean;
   Tiempo: number;
   repetidor:any;
-
+public email: string;
   private subscription: Subscription;
 
   constructor() {
     this.ocultarVerificar=false;
     this.Tiempo=5;
-    this.nuevoJuego = new JuegoAgilidad('Agilidad Aritmetica', false, 'username');
+    this.nuevoJuego = new JuegoAgilidad('Agilidad Aritmetica', false);
     console.info("Inicio agilidad");
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.email = localStorage.getItem("email");
+
+  }
 
   NuevoJuego() {
     this.ocultarVerificar=false;
@@ -45,6 +49,8 @@ export class AgilidadAritmeticaComponent implements OnInit {
   }
 
   generarOperacion() {
+    this.nuevoJuego.fecha = new Date();
+    this.nuevoJuego.jugador = this.email;
     this.nuevoJuego.generarOperacion();
     this.operacionArtimeticaGenerada = true;
   }
@@ -58,10 +64,14 @@ export class AgilidadAritmeticaComponent implements OnInit {
     if (this.nuevoJuego.verificar()) {
       this.enviarJuego.emit(this.nuevoJuego);
       this.MostarMensaje('Sos un Genio!!!', true);
+      this.nuevoJuego = new JuegoAgilidad('Agilidad Aritmetica', false);
 
     } else {
-      let mensaje: string;
-      mensaje = 'Lo siento, necesitas mejorar tu habilidad con la calculadora master';
+      this.enviarJuego.emit(this.nuevoJuego);
+      let mensaje: string = 'Lo siento, necesitas mejorar tu habilidad con la calculadora master';
+      this.MostarMensaje(mensaje, false);
+      this.nuevoJuego = new JuegoAgilidad('Agilidad Aritmetica', false);
+
     }
 
     this.nuevoJuego.resultado = 0;

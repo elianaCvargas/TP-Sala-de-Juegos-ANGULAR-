@@ -8,7 +8,10 @@ import {
 } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Jugador } from 'src/app/clases/jugador';
+import { Ranking } from 'src/app/clases/Ranking';
 import { AuthService } from 'src/app/servicios/auth.service';
+import { JuegoServiceService } from 'src/app/servicios/juego-service.service';
 import { AvisoDialogModel, CartelInformeComponent } from '../cartel-informe/cartel-informe.component';
 @Component({
   selector: 'app-registro',
@@ -27,7 +30,8 @@ export class RegistroComponent implements OnInit {
     public dialog: MatDialog,
     private authService: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    public builder: FormBuilder, private route: Router
+    public builder: FormBuilder, private route: Router,
+    private juegoService: JuegoServiceService
   ) {
     this.userGroup = this.builder.group({
       username: [null, Validators.required],
@@ -55,15 +59,29 @@ export class RegistroComponent implements OnInit {
         this.userGroup.controls.password1.value,
         this.userGroup.controls.username.value
       ).then((res) => {
-        const dialogData = new AvisoDialogModel("Mensaje", "Se ha registrado con exito!");
-        const dialog = this.dialog.open(CartelInformeComponent, {
-          maxWidth: '400px',
-          data: dialogData,
-        });
-
-        dialog.afterClosed().subscribe((data: any) => {
-          this.route.navigate(['/Juegos']);
-          this.dialogRef.close();
+        const jugador = new Jugador(this.email.value, 0, 0);
+        this.juegoService.create_Jugador(jugador).then(() => {
+          const rankingAdivina = new Ranking('Adivina el número', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingAdivina);
+          const rankingAnagrama = new Ranking('Anagrama', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingAnagrama);
+          const rankingPiedra = new Ranking('Piedra Papel o Tijera', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingPiedra);
+          const rankingAgilidad = new Ranking('Agilidad Aritmetica', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingAgilidad);
+          const rankingTateti = new Ranking('Tateti', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingTateti);
+          const rankingAhorcado = new Ranking('Ahorcado', this.email.value, 0 );
+          this.juegoService.create_Ranking(rankingAhorcado);
+          const dialogData = new AvisoDialogModel("Mensaje", "Se ha registrado con exito!");
+          const dialog = this.dialog.open(CartelInformeComponent, {
+            maxWidth: '400px',
+            data: dialogData,
+          });
+          dialog.afterClosed().subscribe((data: any) => {
+            this.route.navigate(['/Juegos']);
+            this.dialogRef.close();
+          });
         });
       })
       .catch((error) => {

@@ -27,7 +27,7 @@ export class ListadoComponent implements OnInit {
     this.juegosService.read_AllGames().subscribe((data) => {
 
       data.forEach(element => {
-       this.listadoParaCompartir.push(element);
+       this.listadoParaCompartir.push(element.data);
       });
       //  this.listadoParaCompartir = data;
       // this.listadoParaCompartir.push(juego);

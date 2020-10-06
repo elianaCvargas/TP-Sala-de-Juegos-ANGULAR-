@@ -1,34 +1,104 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, DocumentReference } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import {
+  AngularFirestore,
+  DocumentChangeAction,
+  DocumentReference,
+} from '@angular/fire/firestore';
+import { observable, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Documento } from '../clases/documento';
 import { Juego } from '../clases/juego';
 import { JuegoAdivina } from '../clases/juego-adivina';
+import { Jugador } from '../clases/jugador';
+import { Ranking } from '../clases/Ranking';
 import { MiHttpService } from './mi-http/mi-http.service';
 
 @Injectable()
 export class JuegoServiceService {
-  constructor(
-    private firestore: AngularFirestore
-  ) { }
+  constructor(private firestore: AngularFirestore) {}
 
-
-  create_NewGame(juegos: Juego): Promise<DocumentReference> {
-    return this.firestore.collection('juegos').add({...juegos});
+  create_NewGame(juegos: any): Promise<DocumentReference> {
+    return this.firestore.collection('juegos').add({ ...juegos });
   }
 
-  read_AllGames() :Observable<Juego[]>{
-     return this.firestore.collection<Juego>('juegos').valueChanges();
+  read_AllGames(): Observable<Documento<Juego>[]> {
+    return this.firestore
+      .collection<Juego>('juegos')
+      .snapshotChanges() //esto permite traer los datos como el id de firebase
+      .pipe(
+        map((results: DocumentChangeAction<Juego>[]) => {
+          return results.map((result) => {
+            var data = result.payload.doc.data();
+
+            return {
+              id: result.payload.doc.id,
+              data: {
+                nombre: data.nombre,
+                jugador: data.jugador,
+                gano: data.gano,
+                fecha: data.fecha,
+              } as Juego,
+            };
+          });
+        })
+      );
   }
 
-  read_AllGamesByEmail(email:string) :Observable<Juego[]>{
-    var juegos =  this.firestore.collection<Juego>(
-      'juegos',
-      (ref) => ref.where('jugador',  '==', email)
+  getRankingByGame(nombreJuego: string): Observable<Documento<Ranking>[]> {
+    return this.firestore
+    .collection<Ranking>('ranking', (ref) =>
+      ref.where('nombre', '==', nombreJuego)
+    )
+    .snapshotChanges()
+    .pipe(
+      map((results: DocumentChangeAction<Ranking>[]) => {
+        return results.map((result) => {
+          var data = result.payload.doc.data();
+
+          return {
+            id: result.payload.doc.id,
+            data: {
+              nombre: data.nombre,
+              jugador: data.jugador,
+              puntaje: data.puntaje,
+            } as Ranking,
+          };
+        });
+      })
     );
-    return juegos.valueChanges();
- }
+  }
 
-  update_Student(recordID,record){
+  read_AllGamesByEmailAndGameName(
+    email: string,
+    name: string
+  ): Observable<Juego[]> {
+    var juegos = this.firestore.collection<Juego>('juegos', (ref) =>
+      ref
+        .where('jugador', '==', email)
+        .where('nombre', '==', name)
+        .orderBy('fecha', 'desc')
+    );
+
+    return juegos.valueChanges();
+  }
+
+  create_Ranking(ranking: Ranking): Promise<DocumentReference> {
+    return this.firestore.collection('ranking').add({ ...ranking });
+  }
+
+  create_Jugador(jugador: Jugador): Promise<DocumentReference> {
+    return this.firestore.collection('jugadores').add({ ...jugador });
+  }
+
+  update_Jugador(doc: Documento<Jugador>) {
+    this.firestore.doc('jugadores/' + doc.id).update(doc.data);
+  }
+
+  update_Ranking(doc: Documento<Ranking>) {
+     this.firestore.doc('ranking/' + doc.id).update(doc.data);
+  }
+
+  update_Student(recordID, record) {
     this.firestore.doc('Students/' + recordID).update(record);
   }
 
@@ -50,7 +120,6 @@ export class JuegoServiceService {
   //   .catch( err => {
   //     console.log( err );
   //   });
-
 
   //   this.peticion
   //   .subscribe( data => {
@@ -92,5 +161,4 @@ export class JuegoServiceService {
 
   //   return promesa;
   // }
-
 }

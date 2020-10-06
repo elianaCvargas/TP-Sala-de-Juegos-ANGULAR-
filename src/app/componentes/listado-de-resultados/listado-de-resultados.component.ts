@@ -15,10 +15,10 @@ import { JuegoAdivina } from 'src/app/clases/juego-adivina';
   styleUrls: ['./listado-de-resultados.component.scss'],
 })
 export class ListadoDeResultadosComponent implements OnInit {
-  @Input() listado: JuegoAdivina [];
+  @Input() listado: any [];
 
 
-  displayedColumns: string[] = ['juego', 'jugador', 'resultado'];
+  displayedColumns: string[] = ['juego', 'jugador', 'resultado', 'fecha'];
   adivinados: JuegoAdivina[];
   dataSource: MatTableDataSource<JuegoAdivina>;
   @ViewChild(MatPaginator) paginator: MatPaginator;

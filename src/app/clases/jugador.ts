@@ -1,11 +1,11 @@
 export class Jugador {
   public nombre: string;
-  public username: string;
-  public password: string;
+  public cantGanados: number;
+  public cantPerdidos: number;
 
-  constructor(nombre: string, username:string, password: string) {
+  constructor(nombre: string, cantGanados: number, cantPerdidos: number) {
     this.nombre = nombre;
-    this.username =  username;
-    this.password = password;
+    this.cantGanados = cantGanados;
+    this.cantPerdidos = cantPerdidos;
   }
 }

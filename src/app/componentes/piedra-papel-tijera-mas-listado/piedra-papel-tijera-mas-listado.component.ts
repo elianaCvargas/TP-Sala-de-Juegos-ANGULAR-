@@ -11,6 +11,7 @@ import { ListadoDeResultadosComponent } from '../listado-de-resultados/listado-d
 })
 export class PiedraPapelTijeraMasListadoComponent implements OnInit {
   public listadoParaCompartir: Array<Juego>;
+  public email:string;
   @ViewChild('listadoResultados') listadoResultados: ListadoDeResultadosComponent;
 
   constructor(private juegosService: JuegoServiceService) {
@@ -18,9 +19,17 @@ export class PiedraPapelTijeraMasListadoComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.email = localStorage.getItem('email');
+    this.juegosService
+      .read_AllGamesByEmailAndGameName(this.email, 'Piedra Papel o Tijera')
+      .subscribe((juegos: JuegoPiedraPapelTijera[]) => {
+        this.listadoResultados.listado = juegos;
+        this.listadoResultados.refresh();
+      });
   }
 
-  tomarJuegoTerminado(juego: Juego) {
+
+  tomarJuegoTerminado(juego: JuegoPiedraPapelTijera) {
     this.juegosService.create_NewGame(juego).then(() => {
       console.log("carla agrego algo");
     });

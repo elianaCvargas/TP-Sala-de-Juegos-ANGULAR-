@@ -25,7 +25,7 @@ const palabras = [
 
 export class JuegoAnagrama extends Juego {
   public anagrama: string;
-  public palabraIngresada: string;
+  public palabraIngresada: string = '';
 
   constructor(gano?: boolean, jugador?: string) {
     super('Anagrama', gano, jugador);
