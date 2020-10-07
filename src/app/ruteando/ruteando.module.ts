@@ -29,6 +29,7 @@ import { JugadoresListadoComponent } from '../componentes/jugadores-listado/juga
 import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-public-layout.component';
 import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
 import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
+import { EstadisticaTablaComponent } from '../componentes/estadistica-tabla/estadistica-tabla.component';
 // import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
 // import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
 // import { PublicGuard, ProtectedGuard } from 'ngx-auth';
@@ -78,8 +79,14 @@ const MiRuteo = [
     path: 'Ranking',
     component: PrincipalComponent,
     children: [
-      { path: '', component: MenuCardComponent },
       { path: 'Listado', component: ListadoComponent },
+    ],
+  },
+  {
+    path: 'Estadisticas',
+    component: PrincipalComponent,
+    children: [
+      { path: '', component: EstadisticaTablaComponent },
     ],
   },
   { path: '**', component: ErrorComponent },

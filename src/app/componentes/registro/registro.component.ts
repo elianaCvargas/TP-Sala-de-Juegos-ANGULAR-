@@ -8,8 +8,10 @@ import {
 } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Jugador } from 'src/app/clases/jugador';
+import { Observable, forkJoin } from 'rxjs';
+import { EstadisticaJugador } from 'src/app/clases/estadistica-jugador';
 import { Ranking } from 'src/app/clases/Ranking';
+import { JuegosEnum } from 'src/app/enum/juegosEnum';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { JuegoServiceService } from 'src/app/servicios/juego-service.service';
 import { AvisoDialogModel, CartelInformeComponent } from '../cartel-informe/cartel-informe.component';
@@ -59,20 +61,38 @@ export class RegistroComponent implements OnInit {
         this.userGroup.controls.password1.value,
         this.userGroup.controls.username.value
       ).then((res) => {
-        const jugador = new Jugador(this.email.value, 0, 0);
-        this.juegoService.create_Jugador(jugador).then(() => {
-          const rankingAdivina = new Ranking('Adivina el número', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingAdivina);
-          const rankingAnagrama = new Ranking('Anagrama', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingAnagrama);
-          const rankingPiedra = new Ranking('Piedra Papel o Tijera', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingPiedra);
-          const rankingAgilidad = new Ranking('Agilidad Aritmetica', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingAgilidad);
-          const rankingTateti = new Ranking('Tateti', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingTateti);
-          const rankingAhorcado = new Ranking('Ahorcado', this.email.value, 0 );
-          this.juegoService.create_Ranking(rankingAhorcado);
+
+        const estadisticaAdivina = new EstadisticaJugador(JuegosEnum.Adivina, this.email.value, 0, 0);
+        const estadisticaAnagrama = new EstadisticaJugador(JuegosEnum.Anagrama, this.email.value, 0, 0);
+        const estadisticaAgilidad = new EstadisticaJugador(JuegosEnum.Agilidad, this.email.value, 0, 0);
+        const estadisticaPiedra = new EstadisticaJugador(JuegosEnum.Piedra, this.email.value, 0, 0);
+        const estadisticaTateti = new EstadisticaJugador(JuegosEnum.Tateti, this.email.value, 0, 0);
+        const estadisticaAhorcado = new EstadisticaJugador(JuegosEnum.Ahorcado, this.email.value, 0, 0);
+        const rankingAdivina = new Ranking(JuegosEnum.Adivina, this.email.value, 0 );
+        const rankingAnagrama = new Ranking(JuegosEnum.Anagrama, this.email.value, 0 );
+        const rankingPiedra = new Ranking(JuegosEnum.Piedra, this.email.value, 0 );
+        const rankingAgilidad = new Ranking(JuegosEnum.Agilidad, this.email.value, 0 );
+        const rankingTateti = new Ranking(JuegosEnum.Tateti, this.email.value, 0 );
+        const rankingAhorcado = new Ranking(JuegosEnum.Ahorcado, this.email.value, 0 );
+        //forkjoin ejecuta todas las consultas de la lista ([..]) ,
+        //una vez que terminan de resolverse TODAS, recien entran o por el succes, o error.
+        forkJoin(
+          [
+            this.juegoService.create_Ranking(rankingAdivina),
+            this.juegoService.create_Ranking(rankingAnagrama),
+            this.juegoService.create_Ranking(rankingPiedra),
+            this.juegoService.create_Ranking(rankingAgilidad),
+            this.juegoService.create_Ranking(rankingTateti),
+            this.juegoService.create_Ranking(rankingAhorcado),
+            this.juegoService.create_Jugador(estadisticaAdivina),
+            this.juegoService.create_Jugador(estadisticaAnagrama),
+            this.juegoService.create_Jugador(estadisticaPiedra),
+            this.juegoService.create_Jugador(estadisticaAgilidad),
+            this.juegoService.create_Jugador(estadisticaTateti),
+            this.juegoService.create_Jugador(estadisticaAhorcado),
+          ]
+        )
+        .subscribe(() => {
           const dialogData = new AvisoDialogModel("Mensaje", "Se ha registrado con exito!");
           const dialog = this.dialog.open(CartelInformeComponent, {
             maxWidth: '400px',
@@ -81,6 +101,13 @@ export class RegistroComponent implements OnInit {
           dialog.afterClosed().subscribe((data: any) => {
             this.route.navigate(['/Juegos']);
             this.dialogRef.close();
+          });
+        },
+        (error) => {
+          const dialogData = new AvisoDialogModel('Ha ocurrido un problema!', error);
+          this.dialog.open(CartelInformeComponent, {
+            maxWidth: '400px',
+            data: dialogData,
           });
         });
       })

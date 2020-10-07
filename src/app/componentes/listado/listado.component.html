@@ -5,8 +5,30 @@
     <div class="row cabecera"></div>
     <div class="row">
       <div class="col listado-col">
-        <h1 class="h1-center"> Ranking juegos </h1>
-        <app-listado-de-resultados #listadoResultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+        <h1 class="h1-center"> Ranking </h1>
+
+        <mat-tab-group mat-align-tabs="start" (selectedTabChange)="tabClick($event)">
+          <mat-tab label="Adivina el número">
+            <!-- el id en los componentes permiten acceder al estado del mismo, es decir al  mismo  componente -->
+            <app-ranking-tabla #listadoResultadosAdivina [listado]="listadoParaCompartir"> </app-ranking-tabla>
+          </mat-tab>
+          <mat-tab label="Agilidad aritmética" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosAgilidad [listado]="listadoParaCompartir"></app-ranking-tabla>
+          </mat-tab>
+          <mat-tab label="Piedra papel tijeras" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosPiedra [listado]="listadoParaCompartir"> </app-ranking-tabla>
+          </mat-tab>
+          <mat-tab label="Anagrama" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosAnagrama [listado]="listadoParaCompartir"> </app-ranking-tabla>
+          </mat-tab>
+          <mat-tab label="Ta-te-ti" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosTateti [listado]="listadoParaCompartir"></app-ranking-tabla>
+          </mat-tab>
+          <mat-tab label="Ahorcado" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosAhorcado [listado]="listadoParaCompartir"> </app-ranking-tabla>
+          </mat-tab>
+        </mat-tab-group>
+
       </div>
     </div>
     <div class="row pie"></div>

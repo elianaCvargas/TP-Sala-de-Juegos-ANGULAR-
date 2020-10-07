@@ -5,11 +5,11 @@ import {
   DocumentReference,
 } from '@angular/fire/firestore';
 import { observable, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Documento } from '../clases/documento';
 import { Juego } from '../clases/juego';
 import { JuegoAdivina } from '../clases/juego-adivina';
-import { Jugador } from '../clases/jugador';
+import { EstadisticaJugador } from '../clases/estadistica-jugador';
 import { Ranking } from '../clases/Ranking';
 import { MiHttpService } from './mi-http/mi-http.service';
 
@@ -44,10 +44,12 @@ export class JuegoServiceService {
       );
   }
 
-  getRankingByGame(nombreJuego: string): Observable<Documento<Ranking>[]> {
+  // este metodo trae los ranking por juego
+    getRankingByGame(nombreJuego: string): Observable<Documento<Ranking>[]> {
     return this.firestore
     .collection<Ranking>('ranking', (ref) =>
       ref.where('nombre', '==', nombreJuego)
+      .orderBy('puntaje', 'desc')
     )
     .snapshotChanges()
     .pipe(
@@ -68,6 +70,83 @@ export class JuegoServiceService {
     );
   }
 
+  getEstadisticaByEmail(email: string): Observable<Documento<EstadisticaJugador>[]> {
+    return this.firestore
+    .collection<EstadisticaJugador>('EstadisticaJugador', (ref) =>
+      ref.where('nombreJugador', '==', email)
+    )
+    .snapshotChanges()
+    .pipe(
+      map((results: DocumentChangeAction<EstadisticaJugador>[]) => {
+        return results.map((result) => {
+          var data = result.payload.doc.data();
+
+          return {
+            id: result.payload.doc.id,
+            data: {
+              nombreJugador: data.nombreJugador,
+              nombreJuego: data.nombreJuego,
+              cantGanados: data.cantGanados,
+              cantPerdidos: data.cantPerdidos,
+            } as EstadisticaJugador,
+          };
+      })
+      })
+    );
+  }
+
+  getEstadisticaJugadorByEmailAndGame(email: string, nombreJuego: string): Observable<Documento<EstadisticaJugador>> {
+    return this.firestore
+    .collection<EstadisticaJugador>('EstadisticaJugador', (ref) =>
+      ref.where('nombreJugador', '==', email)
+      .where('nombreJuego', '==', nombreJuego)
+    )
+    .snapshotChanges()
+    .pipe(
+      take(1),
+      map((results: DocumentChangeAction<EstadisticaJugador>[]) => {
+        var result = results[0];
+        var data = result.payload.doc.data();
+
+        return {
+          id: result.payload.doc.id,
+          data: {
+            nombreJugador: data.nombreJugador,
+            nombreJuego: data.nombreJuego,
+            cantGanados: data.cantGanados,
+            cantPerdidos: data.cantPerdidos,
+          } as EstadisticaJugador,
+        };
+      })
+    );
+  }
+
+  getRankingByGameAndPlayer(nombreJuego: string, jugador: string): Observable<Documento<Ranking>> {
+    return this.firestore
+    .collection<Ranking>('ranking', (ref) =>
+      ref.where('nombre', '==', nombreJuego)
+      .where('jugador', '==', jugador)
+    )
+    .snapshotChanges()
+    .pipe(
+      take(1),
+      map((results: DocumentChangeAction<Ranking>[]) => {
+        var result = results[0];
+        var data = result.payload.doc.data();
+
+        return {
+          id: result.payload.doc.id,
+          data: {
+            nombre: data.nombre,
+            jugador: data.jugador,
+            puntaje: data.puntaje,
+          } as Ranking,
+        };
+      })
+    );
+  }
+
+
   read_AllGamesByEmailAndGameName(
     email: string,
     name: string
@@ -86,21 +165,19 @@ export class JuegoServiceService {
     return this.firestore.collection('ranking').add({ ...ranking });
   }
 
-  create_Jugador(jugador: Jugador): Promise<DocumentReference> {
-    return this.firestore.collection('jugadores').add({ ...jugador });
+  create_Jugador(jugador: EstadisticaJugador): Promise<DocumentReference> {
+    return this.firestore.collection('EstadisticaJugador').add({ ...jugador });
   }
 
-  update_Jugador(doc: Documento<Jugador>) {
-    this.firestore.doc('jugadores/' + doc.id).update(doc.data);
+  update_Jugador(doc: Documento<EstadisticaJugador>) {
+    this.firestore.doc('EstadisticaJugador/' + doc.id).update({...doc.data});
   }
 
   update_Ranking(doc: Documento<Ranking>) {
-     this.firestore.doc('ranking/' + doc.id).update(doc.data);
+     this.firestore.doc('ranking/' + doc.id).update({...doc.data});
   }
 
-  update_Student(recordID, record) {
-    this.firestore.doc('Students/' + recordID).update(record);
-  }
+
 
   delete_Student(record_id) {
     this.firestore.doc('Students/' + record_id).delete();

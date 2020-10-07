@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Juego } from 'src/app/clases/juego';
+import { Ranking } from 'src/app/clases/Ranking';
+import { JuegosEnum } from 'src/app/enum/juegosEnum';
 import { JuegoServiceService } from '../../servicios/juego-service.service';
-import { ListadoDeResultadosComponent } from '../listado-de-resultados/listado-de-resultados.component';
+import { RankingTablaComponent } from '../ranking-tabla/ranking-tabla.component';
 
 @Component({
   selector: 'app-listado',
@@ -9,37 +10,80 @@ import { ListadoDeResultadosComponent } from '../listado-de-resultados/listado-d
   styleUrls: ['./listado.component.scss'],
 })
 export class ListadoComponent implements OnInit {
-  public listadoParaCompartir = Array<Juego>();
-  @ViewChild('listadoResultados') listadoResultados: ListadoDeResultadosComponent;
+  public listadoParaCompartir = Array<Ranking>();
+
+  @ViewChild('listadoResultadosAdivina')
+  listadoResultadosAdivina: RankingTablaComponent;
+  @ViewChild('listadoResultadosAgilidad')
+  listadoResultadosAgilidad: RankingTablaComponent;
+  @ViewChild('listadoResultadosPiedra')
+  listadoResultadosPiedra: RankingTablaComponent;
+  @ViewChild('listadoResultadosAnagrama')
+  listadoResultadosAnagrama: RankingTablaComponent;
+  @ViewChild('listadoResultadosTateti')
+  listadoResultadosTateti: RankingTablaComponent;
+  @ViewChild('listadoResultadosAhorcado')
+  listadoResultadosAhorcado: RankingTablaComponent;
 
   miServicioJuego: JuegoServiceService;
   public listadojuegos;
 
-  constructor(private juegosService: JuegoServiceService) {
-    this.listadoParaCompartir = new Array<any>();
-  }
+  constructor(private juegosService: JuegoServiceService) {}
 
   ngOnInit() {
-    this.llamaService();
+    this.tabClick({ index: 0 });
   }
 
-  llamaService() {
-    this.juegosService.read_AllGames().subscribe((data) => {
-
-      data.forEach(element => {
-       this.listadoParaCompartir.push(element.data);
-      });
-      //  this.listadoParaCompartir = data;
-      // this.listadoParaCompartir.push(juego);
-      this.listadoResultados.refresh();
-    });
-
-  }
-
-  llamaServicePromesa() {
-    console.log('llamaServicePromesa');
-    // this.miServicioJuego.listarPromesa().then((listado) => {
-    //     this.listadoParaCompartir = listado;
-    // });
+  tabClick(tab) {
+    switch (tab.index) {
+      case 0:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Adivina)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosAdivina.refresh(this.listadoParaCompartir);
+          });
+        break;
+      case 1:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Agilidad)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosAgilidad.refresh(this.listadoParaCompartir);
+          });
+        break;
+      case 2:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Piedra)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosPiedra.refresh(this.listadoParaCompartir);
+          });
+        break;
+      case 3:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Anagrama)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosAnagrama.refresh(this.listadoParaCompartir);
+          });
+        break;
+      case 4:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Tateti)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosTateti.refresh(this.listadoParaCompartir);
+          });
+        break;
+      case 5:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Ahorcado)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosAhorcado.refresh(this.listadoParaCompartir);
+          });
+        break;
+    }
   }
 }

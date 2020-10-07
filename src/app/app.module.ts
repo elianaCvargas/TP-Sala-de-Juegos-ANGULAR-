@@ -66,6 +66,8 @@ import { TatetiTableroComponent } from './componentes/tateti/tateti-tablero/tate
 import { TerminosCondicionesComponent } from './componentes/terminos-condiciones/terminos-condiciones.component';
 import { CartelInformeComponent } from './componentes/cartel-informe/cartel-informe.component';
 import { DatePipe } from '@angular/common';
+import { RankingTablaComponent } from './componentes/ranking-tabla/ranking-tabla.component';
+import { EstadisticaTablaComponent } from './componentes/estadistica-tabla/estadistica-tabla.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +108,9 @@ import { DatePipe } from '@angular/common';
     TatetiCuadradoComponent,
     TatetiTableroComponent,
     TerminosCondicionesComponent,
-    CartelInformeComponent
+    CartelInformeComponent,
+    RankingTablaComponent,
+    EstadisticaTablaComponent
   ],
   imports: [
     BrowserModule,

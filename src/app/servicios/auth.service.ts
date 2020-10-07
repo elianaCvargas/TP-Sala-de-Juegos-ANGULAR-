@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { promise } from 'protractor';
 import { observable, Observable, throwError } from 'rxjs';
 import { of } from 'rxjs';
-import { Jugador } from '../clases/jugador';
+import { EstadisticaJugador } from '../clases/estadistica-jugador';
 
 import {
   AvisoDialogModel,

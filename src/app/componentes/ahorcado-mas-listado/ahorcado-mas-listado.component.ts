@@ -19,11 +19,20 @@ export class AhorcadoMasListadoComponent implements OnInit {
   ngOnInit() {}
 
   tomarJuegoTerminado(juego: JuegoAhorcado) {
-    console.log("en app",juego);
-    this.juegosService.create_NewGame(juego).then(() => {
-      console.log("carla agrego algo");
+    var juegoModel = {
+      Juego: juego.nombre,
+      fecha: juego.fecha,
+      jugador: juego.jugador,
+      gano: juego.gano,
+      palabraSecreta: juego.palabraSecreta,
+      letraIngresada: juego.letraIngresada,
+      palabraProgreso: juego.palabraProgreso,
+
+    };
+    this.juegosService.create_NewGame(juegoModel).then(() => {
     });
     this.listadoParaCompartir.push(juego);
     this.listadoResultados.refresh();
   }
+
 }

@@ -1,5 +1,10 @@
 import { EventEmitter } from '@angular/core';
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { Documento } from 'src/app/clases/documento';
+import { EstadisticaJugador } from 'src/app/clases/estadistica-jugador';
+import { Ranking } from 'src/app/clases/Ranking';
+import { JuegosEnum } from 'src/app/enum/juegosEnum';
+import { JuegoServiceService } from 'src/app/servicios/juego-service.service';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
 
 @Component({
@@ -21,8 +26,11 @@ export class PiedraPapelTijeraComponent implements OnInit {
   esGanador: boolean = false;
   esFinJuego: boolean = false;
   public email: string;
+  public docRanking: Documento<Ranking>;
+  public docJugador: Documento<EstadisticaJugador>;
+  public puntajeInicial: number = 50;
 
-  constructor() {
+  constructor(private juegosService: JuegoServiceService) {
     this.nuevoJuego = new JuegoPiedraPapelTijera('Nombre', false);
     console.info('numero Secreto:', this.nuevoJuego.seleccionIA);
     this.ocultarVerificar = false;
@@ -63,6 +71,21 @@ export class PiedraPapelTijeraComponent implements OnInit {
       this.esGanador = true;
       this.MostarMensaje('Genio, capo de los dioses!!!', this.esGanador);
       this.nuevoJuego = new JuegoPiedraPapelTijera('Nombre', false);
+      this.juegosService
+        .getRankingByGameAndPlayer(this.nuevoJuego.nombre, this.email)
+        .subscribe((data) => {
+          this.docRanking = data;
+          this.docRanking.data.puntaje += this.puntajeInicial;
+          this.juegosService.update_Ranking(this.docRanking);
+        });
+
+      this.juegosService
+        .getEstadisticaJugadorByEmailAndGame(this.email, JuegosEnum.Piedra)
+        .subscribe((data) => {
+          this.docJugador = data;
+          this.docJugador.data.cantGanados++;
+          this.juegosService.update_Jugador(this.docJugador);
+        });
     } else {
       this.enviarJuego.emit(this.nuevoJuego);
       this.esGanador = false;
@@ -71,6 +94,13 @@ export class PiedraPapelTijeraComponent implements OnInit {
         this.esGanador
       );
       this.nuevoJuego = new JuegoPiedraPapelTijera('Nombre', false);
+      this.juegosService
+        .getEstadisticaJugadorByEmailAndGame(this.email, JuegosEnum.Piedra)
+        .subscribe((data) => {
+          this.docJugador = data;
+          this.docJugador.data.cantPerdidos++;
+          this.juegosService.update_Jugador(this.docJugador);
+        });
     }
 
     this.nuevoJuego.seleccionIA = 0;
