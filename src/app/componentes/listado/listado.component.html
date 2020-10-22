@@ -24,6 +24,9 @@
           <mat-tab label="Ta-te-ti" (selectedTabChange)="tabClick($event)">
             <app-ranking-tabla #listadoResultadosTateti [listado]="listadoParaCompartir"></app-ranking-tabla>
           </mat-tab>
+          <mat-tab label="Memotest" (selectedTabChange)="tabClick($event)">
+            <app-ranking-tabla #listadoResultadosMemotest [listado]="listadoParaCompartir"></app-ranking-tabla>
+          </mat-tab>
           <mat-tab label="Ahorcado" (selectedTabChange)="tabClick($event)">
             <app-ranking-tabla #listadoResultadosAhorcado [listado]="listadoParaCompartir"> </app-ranking-tabla>
           </mat-tab>

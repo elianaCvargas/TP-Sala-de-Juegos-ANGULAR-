@@ -8,6 +8,7 @@
         <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
         <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="6"></li>
       </ol>
     </div>
     <div class="carousel-inner">
@@ -161,6 +162,38 @@
                 <div class="paramtxt">
                   <h5>Ta Te Ti</h5>
                   <p>Competi contra la maquina</p>
+                  <p>Sumás puntos si ganas</p>
+                  <h6 class="text-warning">Para poder jugar tenes que registrarte</h6>
+                </div>
+              </div>
+              <div class="col"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="carousel-caption d-none d-md-block d-md-block-mine">
+          <div class="juego">
+            <img src="./../../../assets/imagenes/memo.png" class="img-fluid rounded-circle hoverable roundedImg" />
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <button  [disabled]="!this.userIsLogged" type="button" class="btn btn-outline-warning" routerLink="Memotest"
+                  routerLinkActive="active-link">
+                  Jugar
+                </button>
+              </div>
+              <div class="col"></div>
+            </div>
+            <div class="row">
+              <div class="col"></div>
+              <div class="col">
+                <div class="paramtxt">
+                  <h5>Memotest</h5>
+                  <p>Recordá la las imágenes</p>
                   <p>Sumás puntos si ganas</p>
                   <h6 class="text-warning">Para poder jugar tenes que registrarte</h6>
                 </div>

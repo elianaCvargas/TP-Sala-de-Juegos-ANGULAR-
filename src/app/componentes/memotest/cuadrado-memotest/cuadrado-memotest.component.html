@@ -1,0 +1,5 @@
+<input *ngIf="image.estado === estados.Visible" type="image" class="square" [class.disabled]="disabled" (click)="imgSelection.emit()" [disabled]="disabled"
+  [src]="image.ruta" />
+
+<button *ngIf="image.estado === estados.Oculto" type="image" class="square" [class.disabled]="disabled" (click)="imgSelection.emit()"
+  [disabled]="disabled"></button>

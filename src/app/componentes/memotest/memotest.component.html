@@ -1,0 +1,24 @@
+
+<div class="container adivina-container">
+  <div>
+    <h1 class="title_">{{ nuevoJuego.nombre }}!</h1>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="game tateti-container">
+        <div class="game-board">
+          <app-tablero-memotest [stopPlay]="nuevoJuego.gano" (reset)="handleReset()"
+            (coinPlacement)="handleCoinMovement($event)" [tablero]="nuevoJuego.tableroActual">
+          </app-tablero-memotest>
+        </div>
+        <div class="game-info">
+          <div>
+            <div *ngIf="nuevoJuego.gano" class="status" [class.winner]="nuevoJuego.gano">Ganaste!!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row pie"></div>

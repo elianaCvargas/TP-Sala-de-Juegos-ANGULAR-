@@ -24,6 +24,8 @@ export class ListadoComponent implements OnInit {
   listadoResultadosTateti: RankingTablaComponent;
   @ViewChild('listadoResultadosAhorcado')
   listadoResultadosAhorcado: RankingTablaComponent;
+  @ViewChild('listadoResultadosMemotest')
+  listadoResultadosMemotest: RankingTablaComponent;
 
   miServicioJuego: JuegoServiceService;
   public listadojuegos;
@@ -77,6 +79,14 @@ export class ListadoComponent implements OnInit {
           });
         break;
       case 5:
+        this.juegosService
+          .getRankingByGame(JuegosEnum.Memotest)
+          .subscribe((data) => {
+            this.listadoParaCompartir = data.map((doc) => doc.data);
+            this.listadoResultadosMemotest.refresh(this.listadoParaCompartir);
+          });
+        break;
+        case 6:
         this.juegosService
           .getRankingByGame(JuegosEnum.Ahorcado)
           .subscribe((data) => {

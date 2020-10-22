@@ -68,12 +68,14 @@ export class RegistroComponent implements OnInit {
         const estadisticaPiedra = new EstadisticaJugador(JuegosEnum.Piedra, this.email.value, 0, 0);
         const estadisticaTateti = new EstadisticaJugador(JuegosEnum.Tateti, this.email.value, 0, 0);
         const estadisticaAhorcado = new EstadisticaJugador(JuegosEnum.Ahorcado, this.email.value, 0, 0);
+        const estadisticaMemotest = new EstadisticaJugador(JuegosEnum.Memotest, this.email.value, 0, 0);
         const rankingAdivina = new Ranking(JuegosEnum.Adivina, this.email.value, 0 );
         const rankingAnagrama = new Ranking(JuegosEnum.Anagrama, this.email.value, 0 );
         const rankingPiedra = new Ranking(JuegosEnum.Piedra, this.email.value, 0 );
         const rankingAgilidad = new Ranking(JuegosEnum.Agilidad, this.email.value, 0 );
         const rankingTateti = new Ranking(JuegosEnum.Tateti, this.email.value, 0 );
         const rankingAhorcado = new Ranking(JuegosEnum.Ahorcado, this.email.value, 0 );
+        const rankingMemotest = new Ranking(JuegosEnum.Memotest, this.email.value, 0 );
         //forkjoin ejecuta todas las consultas de la lista ([..]) ,
         //una vez que terminan de resolverse TODAS, recien entran o por el succes, o error.
         forkJoin(
@@ -84,12 +86,14 @@ export class RegistroComponent implements OnInit {
             this.juegoService.create_Ranking(rankingAgilidad),
             this.juegoService.create_Ranking(rankingTateti),
             this.juegoService.create_Ranking(rankingAhorcado),
+            this.juegoService.create_Ranking(rankingMemotest),
             this.juegoService.create_Jugador(estadisticaAdivina),
             this.juegoService.create_Jugador(estadisticaAnagrama),
             this.juegoService.create_Jugador(estadisticaPiedra),
             this.juegoService.create_Jugador(estadisticaAgilidad),
             this.juegoService.create_Jugador(estadisticaTateti),
             this.juegoService.create_Jugador(estadisticaAhorcado),
+            this.juegoService.create_Jugador(estadisticaMemotest),
           ]
         )
         .subscribe(() => {

@@ -1,0 +1,10 @@
+<div>
+  <div class="board-row" *ngFor="let row of tablero; let i = index">
+    <app-cuadrado-memotest *ngFor="let column of row; let j = index" [image]="column" [disabled]="stopPlay"
+      (imgSelection)="emitCoinPlacement(i, j)">
+    </app-cuadrado-memotest>
+  </div>
+  <div class="action-button-container">
+    <button (click)="reset.emit()">Reiniciar</button>
+  </div>
+</div>

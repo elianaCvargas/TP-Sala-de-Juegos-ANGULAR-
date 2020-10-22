@@ -4,5 +4,6 @@ export enum JuegosEnum {
   Adivina = 'Adivina el número',
   Tateti = 'Tateti',
   Ahorcado = 'Ahorcado',
-  Anagrama = 'Anagrama'
+  Anagrama = 'Anagrama',
+  Memotest = 'Memotest'
 }

@@ -30,6 +30,8 @@ import { SalaPublicLayoutComponent } from '../layouts/sala-public-layout/sala-pu
 import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
 import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
 import { EstadisticaTablaComponent } from '../componentes/estadistica-tabla/estadistica-tabla.component';
+import { MemotestComponent } from '../componentes/memotest/memotest.component';
+import { MemotestMasListadoComponent } from '../componentes/memotest-mas-listado/memotest-mas-listado.component';
 // import { AnagramaMasListadoComponent } from '../componentes/anagrama-mas-listado/anagrama-mas-listado.component';
 // import { TatetiMasListadoComponent } from '../componentes/tateti-mas-listado/tateti-mas-listado.component';
 // import { PublicGuard, ProtectedGuard } from 'ngx-auth';
@@ -73,6 +75,7 @@ const MiRuteo = [
       },
       { path: 'Anagrama', component: AnagramaMasListadoComponent },
       { path: 'Tateti', component: TatetiMasListadoComponent },
+      { path: 'Memotest', component: MemotestMasListadoComponent },
     ],
   },
   {

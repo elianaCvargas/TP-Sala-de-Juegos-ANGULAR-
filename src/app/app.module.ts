@@ -68,6 +68,10 @@ import { CartelInformeComponent } from './componentes/cartel-informe/cartel-info
 import { DatePipe } from '@angular/common';
 import { RankingTablaComponent } from './componentes/ranking-tabla/ranking-tabla.component';
 import { EstadisticaTablaComponent } from './componentes/estadistica-tabla/estadistica-tabla.component';
+import { MemotestComponent } from './componentes/memotest/memotest.component';
+import { MemotestMasListadoComponent } from './componentes/memotest-mas-listado/memotest-mas-listado.component';
+import { CuadradoMemotestComponent } from './componentes/memotest/cuadrado-memotest/cuadrado-memotest.component';
+import { TableroMemotestComponent } from './componentes/memotest/tablero-memotest/tablero-memotest.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +114,11 @@ import { EstadisticaTablaComponent } from './componentes/estadistica-tabla/estad
     TerminosCondicionesComponent,
     CartelInformeComponent,
     RankingTablaComponent,
-    EstadisticaTablaComponent
+    EstadisticaTablaComponent,
+    MemotestComponent,
+    MemotestMasListadoComponent,
+    CuadradoMemotestComponent,
+    TableroMemotestComponent
   ],
   imports: [
     BrowserModule,

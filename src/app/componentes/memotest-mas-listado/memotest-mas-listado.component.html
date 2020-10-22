@@ -1,0 +1,15 @@
+<div class="_contenedor">
+  <div class="container">
+    <div class="row cabecera"></div>
+    <div class="row">
+      <div class="col">
+        <app-memotest (enviarJuego)="tomarJuegoTerminado($event)"></app-memotest>
+      </div>
+      <div class="col listado-col">
+        <h1 class="h1-center"> Mis juegos </h1>
+        <app-listado-de-resultados #listadoResultados [listado]="listadoParaCompartir"> </app-listado-de-resultados>
+      </div>
+    </div>
+    <div class="row pie"></div>
+  </div>
+</div>
